@@ -6,6 +6,7 @@ const login = require('./controllers/auth');
 const register = require('./controllers/auth');
 const {about} = require('./controllers/about');
 const {notFound} = require('./controllers/notFound');
+const {admin} = require('./controllers/admin');
 
 start();
 
@@ -21,6 +22,7 @@ function start() {
     app.use('/static', express.static('static')); //сервирва статични файлове
 
     app.get('/', home);
+    app.get('/admin', admin);
     app.get('/about', about);
     app.get('/login', login);
     app.get('/register', register);
