@@ -1,26 +1,25 @@
 const mongoose = require('mongoose');
 
-const connectionString = 'mongoose:localhost:27017/portfolio';
+require('./Pay');
 
+const connectionString = 'mongodb://localhost:27017/carbicle';
 
-async function  init() {
-    try{
-await mongoose.connect(connectionString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    autoIndex: false
-});
-console.log('Database connected');
+async function init() {
+    try {
+        await mongoose.connect(connectionString, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            autoIndex: false
+        });
+        console.log('Database connected');
 
-mongoose.connection.on('error', (err) =>{
-    console.error('Database error');
-
-    console.error(err);
-})
-    }catch(err){
+        mongoose.connection.on('error', (err) => {
+            console.error('Database error');
+            console.error(err);
+        });
+    } catch (err) {
         console.error('Error connecting to database');
-
-        process.exit(1);
+        process.exit(1); //0 - Приложението е завършили успешно, 1 - има проблем
     }
 }
 
