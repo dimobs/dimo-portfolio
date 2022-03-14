@@ -1,21 +1,23 @@
 const Pay = require('../models/Pay');
-// const {payPreview} = require('./util')
+ const {payModel} = require('./util')
 
 async function getById(id) {
 
 }
 
-async function getAll (query) {
+async function getAll(query) {
     const options = {
         isDeleted: false
     };
 
-    const pays = await Pay.find({});
-       return pays;
-} 
+    // const pays = await Pay.find({}).lean(); //Лийм изпраща всички данни
+    //    return pays;
+    const pays = await Pay.find({}); //View Model копира само инфото, която да пратим
+    return pays.map(payModel);
+}
 
-async function createPay (pay) {
-     const result = new Pay(pay);
+async function createPay(pay) {
+    const result = new Pay(pay);
     await result.save();
 }
 

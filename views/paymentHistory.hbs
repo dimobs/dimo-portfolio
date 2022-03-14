@@ -1,7 +1,28 @@
-<div id="cars">
+<div class="admin">
+<li><a href="/createPay">Create</a></li>
+<p>Table pay history:</p>
+   <table>
+  <colgroup class="colgroup">
+    <col style="background-color:burlywood">
+    <col span="99">
+  </colgroup>
+  
+    <tr class="tr"> 
+     <th>Number</th>
+    <th>Sender</th>
+    <th>Resiver</th>
+    <th>Money</th>
+    <th>description</th>
+    <th>operation</th>
+    </tr>
     {{#each tablePays}}
+     <tr class="tr">
     {{> payPreview}}
+     </tr>
+    
     {{else}}
+    
     <p>No cars in database. <a href="/createPay">Create the first listing!</a></p>
     {{/each}}
+ </table>
 </div>

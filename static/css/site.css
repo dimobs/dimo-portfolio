@@ -360,3 +360,21 @@ div.format-404 {
     text-align: center;
     font-style: italic;
 }
+
+.tableData {
+    background-color:#718F94;
+    padding: 3em;
+    margin: 5em;
+}
+
+.colgroup {
+    background-color:#718F94;
+   
+}
+
+.tr {
+    width: 20%;
+    padding: 5%;
+        text-decoration: none;
+
+}

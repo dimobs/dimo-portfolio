@@ -12,20 +12,21 @@ function accessoryViewModel(accessory) {
     // };
 }
 
-function payPreviewModel(pay) {
+function payModel(pay) {
     const model = {
         id: pay._id,
-        name: pay.sender,
-        description: pay.description,
+        sender: pay.sender,
+        resiver: pay.resiver,
         imageUrl: pay.imageUrl,
-        price: car.price,
-        accessories: car.accessories,
-        owner: car.owner
+        amount: pay.amount,
+        description: pay.description,
+        date: pay.date,
+       owner: pay.owner,
     };
 
-    if (model.accessories.length > 0 && model.accessories[0].name) {
-        model.accessories = model.accessories.map(accessoryViewModel);
-    }
+    // if (model.accessories.length > 0 && model.accessories[0].name) {
+    //     model.accessories = model.accessories.map(accessoryViewModel);
+    // }
 
     return model;
 }
@@ -76,7 +77,7 @@ function mapError(error) {
 
 module.exports = {
     accessoryViewModel,
-    payPreviewModel,
+    payModel,
     hashPassword,
     comparePassword,
     isLoggedIn,
