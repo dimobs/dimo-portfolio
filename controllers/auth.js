@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { body, validationResult } = require('express-validator');
- const { mapError } = require('../service/util');
+ const { mapError } = require('../services/util');
 
 
 const router = Router();
@@ -24,7 +24,7 @@ router.post('/register',
         .withMessage('Password don\'t match'),
     async (req, res) => {
         const { errors } = validationResult(req);
-
+        
         try {
             if (errors.length > 0) {
                 throw errors;
@@ -44,6 +44,7 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         await req.auth.login(req.body.username, req.body.password);
+        console.log(req.body.username);
         res.redirect('/');
     } catch (err) {
         console.error(err.message);

@@ -4,30 +4,30 @@
 //     }
 // }
 
-const {mapError} = require('../service/util')
+const { mapError } = require('../services/util')
 
 module.exports = {
     get(req, res) {
-        res.render('createPay', { title: "CreatePay" })
+        res.render('createPay', { title: "CreatePay Listing" })
     },
 
     async post(req, res) {
         const pay = {
-            nameSender: req.body.nameSender,
-            nameResiver: req.body.nameResiver,
-            price: Number(req.body.price),
+            sender: req.body.sender,
+            resiver: req.body.resiver,
+            amount: Number(req.body.amount),
             description: req.body.description,
             imageUrl: req.body.imageUrl,
+            date: req.body.date,
         };
-
         try {
             await req.storage.createPay(pay);
 
-            res.redirect('/');
-        }catch(err) {
+            res.redirect('/paymentHistory');
+        } catch (err) {
             console.log('Error createing record');
             res.locals.error = mapError(err);
-            res.render('createPay', {title: "Create Listing", pay});
+            res.render('createPay', { title: "Create Listing", pay });
         }
     }
 };

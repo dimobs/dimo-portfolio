@@ -7,22 +7,22 @@
 <div class="form">
   <form action="/createPay" method="POST">
 
-        <select placeholder="dasdsa">
-            <option value="">Select Sender Name*</option>
-            <option  value="{{pay.nameSender}}">Todor Yankov Karachorbadzhiev</option>
-            <option  value="{{pay.nameSender}}">Dimo Yankov Karachorbadzhiev</option>
-            <option  value="{{pay.nameSender}}">Ivanka Dimova Karachorbadzhieva</option>
+         <select name="sender">
+            <option selected>Select Sender Name*</option>
+            <option value="Todor">Todor Yankov Karachorbadzhiev</option>
+            <option value="Dimo" name="nameSender">Dimo Yankov Karachorbadzhiev</option>
+            <option value="Ivanka" name="nameSender">Ivanka Dimova Karachorbadzhieva</option>
         </select>
 
-            <select placeholder="dasdsa">
-            <option value="">Select Resiver Name*</option>
-            <option value="{{pay.nameResiver}}">Todor Yankov Karachorbadzhiev</option>
-            <option value="{{pay.nameResiver}}">Dimo Yankov Karachorbadzhiev</option>
-            <option value="{{pay.nameResiver}}">Ivanka Dimova Karachorbadzhieva</option>
+            <select name="resiver">
+            <option selected>Select Resiver Name*</option>
+            <option value="Todor">Todor Yankov Karachorbadzhiev</option>
+            <option value="Dimo">Dimo Yankov Karachorbadzhiev</option>
+            <option value="Ivanka">Ivanka Dimova Karachorbadzhieva</option>
         </select>
 
-            <input value="{{date}}" type="date">
-        <input type="number" placeholder="0.00*" id="price" name="amount" value="{{pay.price}}">
+            <input name="date" type="date">
+        <input placeholder="0.00*" id="price" name="amount" value="{{pay.amount}}">
         <textarea id="name" placeholder="Description" name="description">{{pay.description}}</textarea>
         <input type="text" placeholder="Add image" id="image" name="imageUrl" value="{{pay.imageUrl}}">
         <input type="submit" value="Publish">

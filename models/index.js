@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 require('./Pay');
 
-const connectionString = 'mongodb://localhost:27017/carbicle';
+const connectionString = 'mongodb://localhost:27017/potfolio';
 
 async function init() {
     try {

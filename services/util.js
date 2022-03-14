@@ -2,22 +2,22 @@ const bcrypt = require('bcrypt');
 
 
 function accessoryViewModel(accessory) {
-    return {
-        id: accessory._id,
-        name: accessory.name,
-        description: accessory.description,
-        imageUrl: accessory.imageUrl,
-        price: accessory.price,
-        owner: accessory.owner
-    };
+    // return {
+    //     id: accessory._id,
+    //     name: accessory.name,
+    //     description: accessory.description,
+    //     imageUrl: accessory.imageUrl,
+    //     price: accessory.price,
+    //     owner: accessory.owner
+    // };
 }
 
-function carViewModel(car) {
+function payPreviewModel(pay) {
     const model = {
-        id: car._id,
-        name: car.name,
-        description: car.description,
-        imageUrl: car.imageUrl,
+        id: pay._id,
+        name: pay.sender,
+        description: pay.description,
+        imageUrl: pay.imageUrl,
         price: car.price,
         accessories: car.accessories,
         owner: car.owner
@@ -76,7 +76,7 @@ function mapError(error) {
 
 module.exports = {
     accessoryViewModel,
-    carViewModel,
+    payPreviewModel,
     hashPassword,
     comparePassword,
     isLoggedIn,

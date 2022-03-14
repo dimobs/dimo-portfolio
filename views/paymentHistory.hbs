@@ -1,0 +1,7 @@
+<div id="cars">
+    {{#each tablePays}}
+    {{> payPreview}}
+    {{else}}
+    <p>No cars in database. <a href="/createPay">Create the first listing!</a></p>
+    {{/each}}
+</div>
