@@ -19,7 +19,9 @@ module.exports = {
             description: req.body.description,
             imageUrl: req.body.imageUrl,
             date: req.body.date,
+            owner: req.session.user.id,
         };
+      
         try {
             await req.storage.createPay(pay);
 

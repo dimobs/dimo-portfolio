@@ -10,6 +10,7 @@ const authService = require('./services/auth');
 const { home } = require('./controllers/home');
 const { about } = require('./controllers/about');
 const createPay = require('./controllers/createPay');
+const editPay = require('./controllers/editPay');
 const { administrator } = require('./controllers/administrator');
 const {paymentHistory} = require('./controllers/paymentHistory');
 const authController = require('./controllers/auth');
@@ -53,6 +54,10 @@ async function start() {
         app.route('/createPay')
         .get(createPay.get)
         .post(createPay.post);
+
+        app.route('/editPay/:id')
+        .get(editPay.get)
+        .post(editPay.post)
 
     app.use(authController);
 

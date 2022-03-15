@@ -10,21 +10,21 @@
   <form action="/createPay" method="POST">
 
          <select name="sender">
-            <option selected>Select Sender Name*</option>
-            <option value="Todor">Todor Yankov Karachorbadzhiev</option>
+            <option >Select Sender Name*</option>
+            <option value="Todor" selected>Todor Yankov Karachorbadzhiev</option>
             <option value="Dimo" name="nameSender">Dimo Yankov Karachorbadzhiev</option>
             <option value="Ivanka" name="nameSender">Ivanka Dimova Karachorbadzhieva</option>
         </select>
 
             <select name="resiver">
-            <option selected>Select Resiver Name*</option>
+            <option >Select Resiver Name*</option>
             <option value="Todor">Todor Yankov Karachorbadzhiev</option>
-            <option value="Dimo">Dimo Yankov Karachorbadzhiev</option>
+            <option value="Dimo" selected>Dimo Yankov Karachorbadzhiev</option>
             <option value="Ivanka">Ivanka Dimova Karachorbadzhieva</option>
         </select>
 
-            <input name="date" type='date'>
-        <input placeholder="0.00*" id="price" name="amount" value="{{pay.amount}}">
+            <input name="date" type='date' value="03/03/2022">
+        <input placeholder="0.00*" id="price" name="amount" value="25">
         <textarea id="name" placeholder="Description" name="description">{{pay.description}}</textarea>
         <input type="text" placeholder="Add image" id="image" name="imageUrl" value="{{pay.imageUrl}}">
         <input type="submit" value="Publish">

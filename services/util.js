@@ -21,7 +21,7 @@ function payModel(pay) {
         amount: pay.amount,
         description: pay.description,
         date: pay.date,
-       owner: pay.owner,
+        owner: pay.owner
     };
 
     // if (model.accessories.length > 0 && model.accessories[0].name) {

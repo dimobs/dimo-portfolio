@@ -2,7 +2,8 @@ const Pay = require('../models/Pay');
  const {payModel} = require('./util')
 
 async function getById(id) {
-
+const pay = await Pay.findById(id).where({isDeleted: false});
+return (pay);
 }
 
 async function getAll(query) {
@@ -24,7 +25,8 @@ async function createPay(pay) {
 module.exports = () => (req, res, next) => {
     req.storage = {
         createPay,
-        getAll
+        getAll,
+        getById
     };
     next();
 };

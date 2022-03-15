@@ -10,7 +10,7 @@ const paySchema = new Schema({
     date: { type: Date, default: Date.now },
     amount: {type:Number, require: true },  
     isDeleted: { type: Boolean, default: false },
-    owner: {type: ObjectId, ref: "User"}
+    owner: { type: ObjectId, ref: 'User' }
 });
 
 const Pay = model('Pay', paySchema);
