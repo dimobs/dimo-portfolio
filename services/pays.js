@@ -1,9 +1,14 @@
 const Pay = require('../models/Pay');
- const {payModel} = require('./util')
+const { payModel } = require('./util')
 
 async function getById(id) {
-const pay = await Pay.findById(id).where({isDeleted: false});
-return (pay);
+    const pay = await Pay.findById(id).where({ isDeleted: false });
+    if (pay) {
+        return payModel(pay);
+        console.log(req, res);
+    } else {
+        return undefined;
+    }
 }
 
 async function getAll(query) {

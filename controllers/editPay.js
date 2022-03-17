@@ -5,15 +5,26 @@ module.exports = {
         const id = req.params.id;
         const pay = await req.storage.getById(id);
 
-        if (pay.owner != req.session.user.id) {
-            console.log('User is not owner!');
-            return res.redirect('/login');
+        // if (pay.owner != req.session.user.id) {
+        //     console.log('User is not owner!');
+        //     return res.redirect('/login');
+        // }
+
+        // if (pay) {
+        //     res.render('editPay', { title: `Edit Listing - ${pay.sender}`, pay });
+         
+        // } else {
+        //     res.redirect('404');
+        // }
+
+        if (req.session.user && req.session.user.id == car.owner) {
+            car.isOwner = true;
         }
 
-        if (pay) {
-            res.render('editPay', { title: `Edit Listing - ${pay.sender}`, pay });
+        if (car) {
+            res.render('/', { title: `Carbicle - ${pay.sender}`, pay });
         } else {
-            res.redirect('404');
+            res.redirect('/404');
         }
     },
 

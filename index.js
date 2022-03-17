@@ -41,23 +41,24 @@ async function start() {
     app.use(payService());
     app.use(authService());
     
-    app.get('/', home);
+    // app.get('/', home);
+    app.get('/', paymentHistory);
     app.get('/administrator', administrator);
     app.get('/paymentHistory', paymentHistory);
     app.get('/about', about);
 
-    // app.route('/createPay')
-    //     .get(isLoggedIn(), createPay.get)
-    //     .post(isLoggedIn(), createPay.post);
+    app.route('/createPay')
+        .get(isLoggedIn(), createPay.get)
+        .post(isLoggedIn(), createPay.post);
 
 
-        app.route('/createPay')
-        .get(createPay.get)
-        .post(createPay.post);
+        // app.route('/createPay')
+        // .get(createPay.get)
+        // .post(createPay.post);
 
         app.route('/editPay/:id')
-        .get(editPay.get)
-        .post(editPay.post)
+        .get(isLoggedIn(), editPay.get)
+        .post(isLoggedIn(), editPay.post)
 
     app.use(authController);
 
