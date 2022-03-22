@@ -5,36 +5,32 @@ module.exports = {
         const id = req.params.id;
         const pay = await req.storage.getById(id);
 
-        // if (pay.owner != req.session.user.id) {
-        //     console.log('User is not owner!');
-        //     return res.redirect('/login');
+        // if (req.session.user && req.session.user.id == pay.owner) {
+        //     pay.isOwner = true;
         // }
 
-        // if (pay) {
-        //     res.render('editPay', { title: `Edit Listing - ${pay.sender}`, pay });
-         
-        // } else {
-        //     res.redirect('404');
-        // }
+        if (pay) {
+            res.render('editPay', { title: `Edit Listing - ${pay.sender}`, pay });
 
-        if (req.session.user && req.session.user.id == car.owner) {
-            car.isOwner = true;
-        }
-
-        if (car) {
-            res.render('/', { title: `Carbicle - ${pay.sender}`, pay });
         } else {
-            res.redirect('/404');
+            res.redirect('404');
         }
     },
-
     async post(req, res) {
         const id = req.params.id;
-        const pay = { payModel };
+        const pay = {
+            sender: req.body.sender,
+            resiver: req.body.resiver,
+            description: req.body.description,
+            date: req.body.date,
+            imageUrl: req.body.imageUrl,
+            amount: Number(req.body.amount)
+        };
 
+        console.log(pay);
         try {
-            if (await req.storage.updateById(id, car, req.session.user.id)) {
-                res.redirect('/')
+            if (await req.storage.updateById(id, pay, req.session.user.id)) {
+                res.redirect('/payHistory')
             } else {
                 res.redirect('/login');
             }

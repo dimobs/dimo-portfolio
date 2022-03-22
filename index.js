@@ -12,7 +12,7 @@ const { about } = require('./controllers/about');
 const createPay = require('./controllers/createPay');
 const editPay = require('./controllers/editPay');
 const { administrator } = require('./controllers/administrator');
-const {paymentHistory} = require('./controllers/paymentHistory');
+const { paymentHistory } = require('./controllers/paymentHistory');
 const authController = require('./controllers/auth');
 
 const { notFound } = require('./controllers/notFound');
@@ -21,7 +21,7 @@ const { isLoggedIn } = require('./services/util');
 start();
 
 async function start() {
-  
+
     await initDB();
 
     const app = express();
@@ -40,11 +40,24 @@ async function start() {
     app.use('/static', express.static('static')); //сервирва статични файлове
     app.use(payService());
     app.use(authService());
-    
-    // app.get('/', home);
-    app.get('/', paymentHistory);
+
+    function couting() {
+        return function (req, res, next) {
+            if (req.session.view) {
+                req.session.view++;
+            } else {
+                req.session.view = 1;
+            }
+            next();
+        };
+    }
+
+    app.get('/', home);
+    // app.get('/', paymentHistory);
+    //app.get('/', isLoggedIn(), couting(), paymentHistory);
+
     app.get('/administrator', administrator);
-    app.get('/paymentHistory', paymentHistory);
+    app.get('/paymentHistory', isLoggedIn(), couting(), paymentHistory);
     app.get('/about', about);
 
     app.route('/createPay')
@@ -52,11 +65,11 @@ async function start() {
         .post(isLoggedIn(), createPay.post);
 
 
-        // app.route('/createPay')
-        // .get(createPay.get)
-        // .post(createPay.post);
+    // app.route('/createPay')
+    // .get(createPay.get)
+    // .post(createPay.post);
 
-        app.route('/editPay/:id')
+    app.route('/editPay/:id')
         .get(isLoggedIn(), editPay.get)
         .post(isLoggedIn(), editPay.post)
 

@@ -14,26 +14,26 @@ async function register(session, username, password) {
 
 }
 
-async function login(session, username, password) {
-    const user = await User.findOne({username});
+async function login(session, username, password) { //req.session, ...params
+    const user = await User.findOne({ username });
 
-    if(user && await user.comparePassword(password)) {
+    if (user && await user.comparePassword(password)) {
         session.user = {
             id: user._id,
-            user: user.username
+            username: user.username
         };
         return true;
-    }else {
+    } else {
         throw new Error('Incorrect username or password')
     }
 }
 
-function logout (session) {
+function logout(session) {
     delete session.user
 }
 
-module.exports = () => (req,res, next) => {
-    if(req.session.user) {
+module.exports = () => (req, res, next) => {
+    if (req.session.user) {
         res.locals.user = req.session.user;
         res.locals.hasUser = true;
     }

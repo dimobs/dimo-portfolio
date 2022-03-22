@@ -1,9 +1,11 @@
-  
+ 
    <td class="tr">{{action}}</td>
     <td>{{sender}}</td>
     <td>{{resiver}}</td>
     <td>{{amount}}</td>
     <td>{{description}}</td>
-    <td><a class="btn" href="/editPay/{{id}}">edit</a></td>
+      {{#if isOwner}}
+     <td><a class="btn" href="/editPay/{{id}}">edit</a></td>
     <td><a class="btn" href="/delete">delete</a></td>
-   
+   {{/if}}
+

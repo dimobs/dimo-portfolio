@@ -1,16 +1,17 @@
-{{#with pay}}
-<p>Name:</p>
-<h1>{{pay.sender}}</h1>
-<h1>{{resiver}}</h1>
-<img class="cube" src="{{imageUrl}}">
-<div class="details">
-    <p><span>Description:</span> {{description}}</p>
-    <p><span>Price:</span> {{amount}}</p>
-    <a class="btn" href="/paymentHistory">Back</a>
-    {{#if isOwner}}
-    <a class="btn" href="/attach/{{id}}">Attach Accessory</a>
-    <a class="btn" href="/edit/{{id}}">Edit</a>
-    <a class="btn" href="/delete/{{id}}">Delete</a>
-    {{/if}}
+<h1>Edit Listing</h1>
+<div class="form">
+    {{#with pay}}
+    <form action="/editPay/{{id}}" method="POST">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="{{sender}}">
+        <input type="text" id="name" name="name" value="{{resiver}}">
+        <label for="name">Description</label>
+        <textarea id="name" name="description">{{description}}</textarea>
+        <label for="image">ImageUrl</label>
+        <input type="text" id="image" name="imageUrl" value="{{imageUrl}}">
+        <label for="price">Price</label>
+        <input type="number" id="price" name="amount" value="{{amount}}">
+        <input type="submit" value="Save">
+    </form>
+    {{/with}}
 </div>
-{{/with}}

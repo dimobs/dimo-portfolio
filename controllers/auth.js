@@ -44,7 +44,7 @@ router.post('/login', async (req, res) => {
     try {
         await req.auth.login(req.body.username, req.body.password);
      
-        res.redirect('/');
+        res.redirect('/paymentHistory');
     } catch (err) {
         console.error(err.message);
         res.locals.errors = [{ msg: err.message }];

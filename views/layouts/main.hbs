@@ -15,12 +15,20 @@
         <header>
           <ul>
             <li><a href="/"> <img class="logo" src="/static/images/logo-dimo.png"></a></li>
+            {{#if hasUser}}
+            <li><a href="/administrator">Admin</a></li>
+            <li><a href="/logout">Logout</a></li>
+           
+            {{else}}
              <li><a href="/login">Login</a></li>
             <li><a href="/register">Register</a></li>
-            <li><a href="/administrator">Admin</a></li>
+            {{/if}}
             <li><a href="/about">About</a></li>
-            <li><a href="/logout">Logout</a></li>
-
+         {{#if hasUser}}
+             <li><h4>Wellcome, <b style="color:white">{{user.username}}</b></h4></li>
+        {{else}}
+             <li><h4>user:<a href="/login" style="color:white">Anonymus</a></h4></li>
+        {{/if}}
           </ul>
         </header>
              <div class="header_bottom"></div>

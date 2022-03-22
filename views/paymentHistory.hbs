@@ -1,4 +1,4 @@
-<p>Welcome, dear  {{req.session}}</p>
+  <h4></h4>You have visit this site {{visitNumber}} times</h4>
 <div class="admin">
 <li><a href="/createPay">Create</a></li>
 <p>Table pay history:</p>
@@ -14,16 +14,15 @@
     <th>Resiver</th>
     <th>Money</th>
     <th>description</th>
-    <th>operation</th>
     </tr>
+    
     {{#each tablePays}}
      <tr class="tr">
     {{> payPreview}}
      </tr>
-    
     {{else}}
-    
-    <p>No cars in database. <a href="/createPay">Create the first listing!</a></p>
+    <p>No pays in database. <a href="/createPay">Create the first listing!</a></p>
     {{/each}}
+
  </table>
 </div>
