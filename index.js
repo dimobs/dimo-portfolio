@@ -11,6 +11,7 @@ const { home } = require('./controllers/home');
 const { about } = require('./controllers/about');
 const createPay = require('./controllers/createPay');
 const editPay = require('./controllers/editPay');
+const deletePay = require('./controllers/delete');
 const { administrator } = require('./controllers/administrator');
 const { paymentHistory } = require('./controllers/paymentHistory');
 const authController = require('./controllers/auth');
@@ -72,6 +73,9 @@ async function start() {
     app.route('/editPay/:id')
         .get(isLoggedIn(), editPay.get)
         .post(isLoggedIn(), editPay.post)
+
+    app.route('/delete/:id')
+        .get(isLoggedIn(), deletePay.get)
 
     app.use(authController);
 

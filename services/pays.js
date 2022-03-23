@@ -46,13 +46,28 @@ async function updateById(id, pay, ownerId) {
     return true;
 }
 
+async function deleteById(id, ownerId) {
+    console.log('level4');
+    const existing = await Pay.findById(id).where({isDeleted: false});
+console.log(existing);
+    if(existing.owner !=ownerId) {
+        console.log(existing.owner);
+        console.log(ownerId);
+        return false;
+    }
+
+    await Pay.findByIdAndUpdate(id, {isDeleted: true});
+    return true;
+}
+
 
 module.exports = () => (req, res, next) => {
     req.storage = {
         createPay,
         getAll,
         getById,
-        updateById
+        updateById,
+        deleteById
     };
     next();
 };

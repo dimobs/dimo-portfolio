@@ -2,9 +2,21 @@
 <div class="form">
     {{#with pay}}
     <form action="/editPay/{{id}}" method="POST">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" value="{{sender}}">
-        <input type="text" id="name" name="name" value="{{resiver}}">
+        <select name="sender">
+            <option >Select Sender Name*</option>
+            <option value="Todor" selected>Todor Yankov Karachorbadzhiev</option>
+            <option value="Dimo" name="nameSender">Dimo Yankov Karachorbadzhiev</option>
+            <option value="Ivanka" name="nameSender">Ivanka Dimova Karachorbadzhieva</option>
+        </select>
+
+            <select name="resiver">
+            <option >Select Resiver Name*</option>
+            <option value="Todor">Todor Yankov Karachorbadzhiev</option>
+            <option value="Dimo" selected>Dimo Yankov Karachorbadzhiev</option>
+            <option value="Ivanka">Ivanka Dimova Karachorbadzhieva</option>
+        </select>
+        <label for="date">Data ivent</label>
+        <input type="date" name="date" value={{date}}><br><br>
         <label for="name">Description</label>
         <textarea id="name" name="description">{{description}}</textarea>
         <label for="image">ImageUrl</label>

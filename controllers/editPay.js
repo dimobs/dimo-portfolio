@@ -1,4 +1,3 @@
-const { payModel } = require('../services/util');
 
 module.exports = {
     async get(req, res) {
@@ -27,10 +26,9 @@ module.exports = {
             amount: Number(req.body.amount)
         };
 
-        console.log(pay);
         try {
             if (await req.storage.updateById(id, pay, req.session.user.id)) {
-                res.redirect('/payHistory')
+                res.redirect('/paymentHistory')
             } else {
                 res.redirect('/login');
             }
