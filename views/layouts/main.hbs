@@ -18,22 +18,23 @@
             {{#if hasUser}}
             <li><a href="/administrator">Admin</a></li>
             <li><a href="/logout">Logout</a></li>
-           
             {{else}}
              <li><a href="/login">Login</a></li>
             <li><a href="/register">Register</a></li>
             {{/if}}
             <li><a href="/about">About</a></li>
-         {{#if hasUser}}
-             <li><h4>Welcome, <b style="color:white">{{user.username}}</b></h4></li>
-        {{else}}
-             <li><h4>user:<a href="/login" style="color:white">Anonymus</a></h4></li>
-        {{/if}}
+            {{#if hasUser}}
+            <li><h4 id="greeting"></h4></li>
+             {{!-- <li><h4 <b style="color:white">{{user.username}}</b></h4></li> --}}
+            {{else}}
+            <li><h4>user:<a href="/login" style="color:white">Anonymus</a></h4></li>
+            {{/if}}
           </ul>
         </header>
              <div class="header_bottom"></div>
                 <main>
-                  {{{body}}}
+                
+                {{{body}}}
                 </main>
      </div>
   <div class="header_bottom"></div>
