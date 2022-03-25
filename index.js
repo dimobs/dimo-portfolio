@@ -12,10 +12,9 @@ const { about } = require('./controllers/about');
 const createPay = require('./controllers/createPay');
 const editPay = require('./controllers/editPay');
 const deletePay = require('./controllers/delete');
+const authController = require('./controllers/auth');
 const { administrator } = require('./controllers/administrator');
 const { paymentHistory } = require('./controllers/paymentHistory');
-const authController = require('./controllers/auth');
-
 const { notFound } = require('./controllers/notFound');
 const { isLoggedIn } = require('./services/util');
 

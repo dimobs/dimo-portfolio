@@ -1,0 +1,16 @@
+<h1>Change Password Form</h1>
+<div class="form">
+    <form action="/userInfo" method="POST">
+        <label for="username">Change Username</label>
+        <input  value="{{user.username}}" type="text" id="username" name="username">
+        <label for="username">Change Username</label>
+        <input  type="text" id="username" name="NewUsername">
+
+        {{!-- <label for="password">Change Password</label>
+        <input type="password" id="password" name="password">
+
+        <label for="repeatPassword">Re-Password</label>
+        <input type="password" id="repeatPassword" name="repeatPassword"> --}}
+        <input type="submit" value="Change">
+    </form>
+</div>

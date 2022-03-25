@@ -2,11 +2,11 @@ const Pay = require('../models/Pay');
 const { payModel } = require('./util');
 
 async function getById(id) {
-       const pay = await Pay.findById(id).where({ isDeleted: false });
-      
+    const pay = await Pay.findById(id).where({ isDeleted: false });
+
     if (pay) {
         return payModel(pay);
-           } else {
+    } else {
         return undefined;
     }
 }
@@ -47,16 +47,12 @@ async function updateById(id, pay, ownerId) {
 }
 
 async function deleteById(id, ownerId) {
-    console.log('level4');
-    const existing = await Pay.findById(id).where({isDeleted: false});
-console.log(existing);
-    if(existing.owner !=ownerId) {
-        console.log(existing.owner);
-        console.log(ownerId);
+       const existing = await Pay.findById(id).where({ isDeleted: false });
+    if (existing.owner != ownerId) {
         return false;
     }
 
-    await Pay.findByIdAndUpdate(id, {isDeleted: true});
+    await Pay.findByIdAndUpdate(id, { isDeleted: true });
     return true;
 }
 

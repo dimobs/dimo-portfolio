@@ -24,10 +24,11 @@
             {{/if}}
             <li><a href="/about">About</a></li>
             {{#if hasUser}}
-            <li><h4 id="greeting"></h4></li>
+            <li><a href="/userInfo" id="greeting"></a></li>
              {{!-- <li><h4 <b style="color:white">{{user.username}}</b></h4></li> --}}
             {{else}}
-            <li><h4>user:<a href="/login" style="color:white">Anonymus</a></h4></li>
+            <li><a style="color:white" href="/login" id="greeting"> user: Anonymus</a></li>
+            {{!-- <li><h4>user:<a href="/login" style="color:white">Anonymus</a></h4></li> --}}
             {{/if}}
           </ul>
         </header>
