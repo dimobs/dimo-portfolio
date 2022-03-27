@@ -1,16 +1,21 @@
-<h1>Change Password Form</h1>
+<h1>Change Username or Password</h1>
 <div class="form">
     <form action="/userInfo" method="POST">
-        <label for="username">Change Username</label>
-        <input  value="{{user.username}}" type="text" id="username" name="username">
+        <label for="username">Current Username</label>
+        <input  value="{{user.username}}" type="text" id="username" name="username" readonly>
         <label for="username">Change Username</label>
         <input  type="text" id="username" name="NewUsername">
+        <input type="submit" value="Change">
+    </form>
+</div>
 
-        {{!-- <label for="password">Change Password</label>
-        <input type="password" id="password" name="password">
+<div class="form">
+    <form action="/userInfo" method="POST">
+        <label for="password">Change Password</label>
+        <input placeholder="***" type="password" id="password" name="password">
 
         <label for="repeatPassword">Re-Password</label>
-        <input type="password" id="repeatPassword" name="repeatPassword"> --}}
+        <input placeholder="***" type="password" id="repeatPassword" name="repeatPassword">
         <input type="submit" value="Change">
     </form>
 </div>

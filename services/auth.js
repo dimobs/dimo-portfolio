@@ -32,24 +32,19 @@ function logout(session) {
     delete session.user
 }
 
-// async function userUpdate(session, oldUser, newUser, password) {
-//        const user = await User.findOne({ username: Talentbg});
-
-//     if(newUser){
-//         user.username = username;
-//     }
-//     if(password){
-//         user.hashedPassword = password;
-//     }
-//     await user.save();
-//     console.log(user);
-// }
 
 async function userUpdate(session, oldUser, newUser, password) {
-    const user = await User.findOne({oldUser});
+    const user = await User.findOne({ oldUser });
+    console.log(session, oldUser, newUser, password);
+    if (newUser) {
         user.username = newUser;
-    await user.save();
     }
+    if (password) {
+        user.hashedPassword = password;
+    }
+
+    await user.save();
+}
 
 
 module.exports = () => (req, res, next) => {

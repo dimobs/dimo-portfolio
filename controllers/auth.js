@@ -58,7 +58,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/userInfo', (req, res) => {
-    res.render('userInfo', { title: 'user Info' });
+    res.render('userInfo', { title: 'User Info' });
 });
 
 router.post('/userInfo',
@@ -69,13 +69,13 @@ router.post('/userInfo',
     body('NewUsername')
         .isLength({ min: 3 }).withMessage('Username must be at least 3 characters long')
         .isAlphanumeric().withMessage('Username may contain only alphanumeric characters'),
-    // body('password')
-    //     .isLength({ min: 3 }).withMessage('Password must be at least 3 characters long')
-    //     .isAlphanumeric().withMessage('Password may contain only alphanumeric characters'),
-    // body('repeatPassword')
-    //     .custom((value, { req }) =>
-    //         value == req.body.password)           
-    //     .withMessage('Password don\'t match'),
+    body('password')
+        .isLength({ min: 3 }).withMessage('Password must be at least 3 characters long')
+        .isAlphanumeric().withMessage('Password may contain only alphanumeric characters'),
+    body('repeatPassword')
+        .custom((value, { req }) =>
+            value == req.body.password)           
+        .withMessage('Password don\'t match'),
     async (req, res) => {
         // const { errors } = validationResult(req);
 
@@ -83,9 +83,10 @@ router.post('/userInfo',
             // if (errors.length > 0) {
             //     throw errors;
             // }
-            await req.auth.userUpdate(req.body.username, req.body.NewUsername);
-            res.redirect('/');
-        } catch (err) {
+            await req.auth.userUpdate(req.body.username, req.body.NewUsername, req.body.password, req.body.repeatPassword);
+                req.auth.logout();
+                res.redirect('/');
+               } catch (err) {
             res.locals.errors = mapError(err);
             res.render('404', { title: 'User Info', data: { username: req.body.username } });
         }
