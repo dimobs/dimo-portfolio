@@ -85,7 +85,7 @@ router.post('/userInfo',
             // }
             await req.auth.userUpdate(req.body.username, req.body.NewUsername, req.body.password, req.body.repeatPassword);
                 req.auth.logout();
-                res.redirect('/');
+                res.redirect('/login');
                } catch (err) {
             res.locals.errors = mapError(err);
             res.render('404', { title: 'User Info', data: { username: req.body.username } });

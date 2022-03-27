@@ -16,7 +16,7 @@ async function register(session, username, password) {
 
 async function login(session, username, password) { //req.session, ...params
     const user = await User.findOne({ username });
-
+  
     if (user && await user.comparePassword(password)) {
         session.user = {
             id: user._id,
@@ -33,17 +33,19 @@ function logout(session) {
 }
 
 
-async function userUpdate(session, oldUser, newUser, password) {
-    const user = await User.findOne({ oldUser });
-    console.log(session, oldUser, newUser, password);
-    if (newUser) {
-        user.username = newUser;
+async function userUpdate(session, username, newUser, password) {
+     const user = await User.findOne({ username });
+    
+      if (newUser) {
+        username = newUser;
+        user.username = username;
     }
     if (password) {
+        console.log('new pass');
         user.hashedPassword = password;
     }
-
     await user.save();
+   return true;
 }
 
 
