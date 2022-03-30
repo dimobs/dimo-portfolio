@@ -22,10 +22,14 @@
             <option value="Dimo" selected>Dimo Yankov Karachorbadzhiev</option>
             <option value="Ivanka">Ivanka Dimova Karachorbadzhieva</option>
         </select>
-
-            <input name="date" type='date' value="03/03/2022">
-        <input placeholder="0.00*" id="price" name="amount" value="25">
+        <label for="date">Date of creation:</label>
+        <input type='text' name="date" placeholder="19.02.2021" value="{{pay.date}}">
+        <label for="price">Amount:</label>
+        <input placeholder="0.00*" id="price" name="amount" value="{{pay.amaunt}}">
+        <label for="description">Description:</label>
         <textarea id="name" placeholder="Description" name="description">{{pay.description}}</textarea>
+         <label for="image">Image:</label>
+
         <input type="text" placeholder="Add image" id="image" name="imageUrl" value="{{pay.imageUrl}}">
         <input type="submit" value="Publish">
     </form>

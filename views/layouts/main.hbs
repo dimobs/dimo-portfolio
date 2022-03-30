@@ -33,6 +33,13 @@
           </ul>
         </header>
              <div class="header_bottom"></div>
+        {{#if errors}}
+      <div id="notifications">
+        {{#each errors}}
+        <p>{{msg}}</p>
+        {{/each}}
+      </div>
+      {{/if}}
                 <main>
                 
                 {{{body}}}

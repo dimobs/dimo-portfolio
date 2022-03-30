@@ -1,8 +1,6 @@
 const express = require('express');
-const hbs = require('express-handlebars');
-const session = require('express-session');
-
-const initDB = require('./models')
+const expressConfig = require('./config/express');
+const initDB = require('./config/database')
 
 const payService = require('./services/pays');
 const authService = require('./services/auth');
@@ -21,23 +19,11 @@ const { isLoggedIn } = require('./services/util');
 start();
 
 async function start() {
-
     await initDB();
-
+    
     const app = express();
-    app.engine('hbs', hbs.create({
-        extname: '.hbs'
-    }).engine);
-    app.set('view engine', 'hbs');
+    expressConfig(app)
 
-    app.use(session({
-        secret: 'my super duper secret',
-        resave: false,
-        saveUninitialized: true,
-        cookie: { secure: 'auto' }
-    }));
-    app.use(express.urlencoded({ extended: true })); //парсва бодито при POST заявки
-    app.use('/static', express.static('static')); //сервирва статични файлове
     app.use(payService());
     app.use(authService());
 
@@ -53,9 +39,6 @@ async function start() {
     }
 
     app.get('/', home);
-    // app.get('/', paymentHistory);
-    //app.get('/', isLoggedIn(), couting(), paymentHistory);
-
     app.get('/administrator', administrator);
     app.get('/paymentHistory', isLoggedIn(), couting(), paymentHistory);
     app.get('/about', about);
@@ -63,11 +46,6 @@ async function start() {
     app.route('/createPay')
         .get(isLoggedIn(), createPay.get)
         .post(isLoggedIn(), createPay.post);
-
-
-    // app.route('/createPay')
-    // .get(createPay.get)
-    // .post(createPay.post);
 
     app.route('/editPay/:id')
         .get(isLoggedIn(), editPay.get)

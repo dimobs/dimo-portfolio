@@ -1,6 +1,10 @@
 const User = require('../models/Users');
 
 async function register(session, username, password) {
+    getUserByUsername(username);
+    if (user) {
+        throw new Error('Username is taken')
+    }
     const user = new User({
         username,
         hashedPassword: password
@@ -11,12 +15,21 @@ async function register(session, username, password) {
         id: user._id,
         username: user.username
     };
+};
 
+//TODO vertity user uniq
+async function getUserByUsername(username) {
+    const user = await User.findOne({ username: new RegExp(`^${username}$`, 'i') });
+    return user;
 }
 
 async function login(session, username, password) { //req.session, ...params
     const user = await User.findOne({ username });
-  
+// const user = await getUserByUsername(username)
+// if(!user){
+//     throw new Error(`User doesn\'t exist`);
+// }
+
     if (user && await user.comparePassword(password)) {
         session.user = {
             id: user._id,
@@ -34,9 +47,9 @@ function logout(session) {
 
 
 async function userUpdate(session, username, newUser, password) {
-     const user = await User.findOne({ username });
-    
-      if (newUser) {
+    const user = await User.findOne({ username });
+
+    if (newUser) {
         username = newUser;
         user.username = username;
     }
@@ -45,7 +58,7 @@ async function userUpdate(session, username, newUser, password) {
         user.hashedPassword = password;
     }
     await user.save();
-   return true;
+    return true;
 }
 
 
