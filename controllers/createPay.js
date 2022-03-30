@@ -1,9 +1,3 @@
-// module.exports = {
-//     createPay(req, res) {
-//         res.render('createPay', {title: "CreatePay"})
-//     }
-// }
-
 const { mapError } = require('../services/util')
 
 module.exports = {

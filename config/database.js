@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
-
-require('./Pay');
-
+require('../models/Pay');
 const connectionString = 'mongodb://localhost:27017/potfolio';
 
-async function init() {
+module.exports = async(app) =>{
     try {
         await mongoose.connect(connectionString, {
             useNewUrlParser: true,
@@ -21,6 +19,4 @@ async function init() {
         console.error('Error connecting to database');
         process.exit(1); //0 - Приложението е завършили успешно, 1 - има проблем
     }
-}
-
-module.exports = init;
+};
