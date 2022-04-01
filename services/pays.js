@@ -38,6 +38,7 @@ async function updateById(id, pay, ownerId) {
     existing.resiver = pay.resiver;
     existing.description = pay.description || undefined;
     existing.imageUrl = pay.imageUrl || "No image";
+    existing.date = pay.date || "No date";
     existing.amount = pay.amount;
     // existing.accessories = car.accessories;
 
