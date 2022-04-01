@@ -10,9 +10,9 @@ module.exports = {
             sender: req.body.sender,
             resiver: req.body.resiver,
             amount: Number(req.body.amount),
-            description: req.body.description,
+            description: req.body.description || 'No Description',
             imageUrl: req.body.imageUrl,
-            date: req.body.date,
+            date: req.body.date || 'No date',
             owner: req.session.user.id,
         };
       

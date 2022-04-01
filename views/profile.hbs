@@ -1,4 +1,7 @@
   {{!-- <h4></h4>You have visit this site {{visitNumber}} times</h4> --}}
+  <p>User: <span>{{user.username}}</span></p>
+  
+   <p>You have created: <span>{{tablePays.counts}}</span> records</p>
 <div class="admin">
 <li><a href="/createPay">Create</a></li>
 <p>Table:</p>
@@ -18,7 +21,7 @@
     
     {{#each tablePays}}
      <tr class="tr">
-    {{> payPreview}}
+    {{> profilePayPreview}}
      </tr>
     {{else}}
     <p>No pays in database. <a href="/createPay">Create the first listing!</a></p>

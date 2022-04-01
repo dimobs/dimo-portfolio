@@ -8,6 +8,7 @@ const authService = require('./services/auth');
 const { home } = require('./controllers/home');
 const { about } = require('./controllers/about');
 const createPay = require('./controllers/createPay');
+const {profile} = require('./controllers/profile');
 const editPay = require('./controllers/editPay');
 const deletePay = require('./controllers/delete');
 const authController = require('./controllers/auth');
@@ -20,7 +21,7 @@ start();
 
 async function start() {
     await initDB();
-    
+
     const app = express();
     expressConfig(app)
 
@@ -46,6 +47,8 @@ async function start() {
     app.route('/createPay')
         .get(isLoggedIn(), createPay.get)
         .post(isLoggedIn(), createPay.post);
+
+        app.get('/profile', isLoggedIn(), couting(), profile);
 
     app.route('/editPay/:id')
         .get(isLoggedIn(), editPay.get)

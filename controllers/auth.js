@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { body, validationResult } = require('express-validator');
-const { mapError } = require('../services/util');
+const { mapError, isLoggedIn } = require('../services/util');
 
 const router = Router();
 
@@ -57,12 +57,9 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
-router.get('/userInfo', (req, res) => {
-    res.render('userInfo', { title: 'User Info' });
-});
 
-router.post('/userInfo',
-    body('username').trim(),
+router.post('/#',
+    body('username'),
     body('NewUsername').trim(),
     body('password').trim(),
     body('repeatPassword').trim(),
@@ -83,7 +80,7 @@ router.post('/userInfo',
             if (errors.length > 0) {
                 throw errors;
             }
-            await req.auth.userUpdate(req.body.username, req.body.NewUsername, req.body.password, req.body.repeatPassword);
+    await req.auth.userUpdate(req.body.username, req.body.NewUsername, req.body.password, req.body.repeatPassword);
             req.auth.logout();
             res.redirect('/login');
         } catch (err) {

@@ -47,8 +47,7 @@ function logout(session) {
 
 
 async function userUpdate(session, username, newUser, password) {
-    const user = await User.findOne({ username });
-
+            const user = await User.findOne({ username });
     if (newUser) {
         username = newUser;
         user.username = username;

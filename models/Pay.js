@@ -8,8 +8,9 @@ const paySchema = new Schema({
     imageUrl: { type: String },
     description: { type: String },
     date: {
-        type: String, require:false, minlength: [10, `Data must be 10 characters longn`],
-        maxlength: [10, 'Data must be 10 characters long']
+        type: String, require:false, 
+        // minlength: [10, `Data must be 10 characters longn`],
+        // maxlength: [10, 'Data must be 10 characters long']
     },
     amount: { type: Number, require: true },
     isDeleted: { type: Boolean, default: false },
