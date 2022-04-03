@@ -16,7 +16,7 @@ const authController = require('./controllers/auth');
 const { administrator } = require('./controllers/administrator');
 const { paymentHistory } = require('./controllers/paymentHistory');
 const { notFound } = require('./controllers/notFound');
-const { isLoggedIn } = require('./services/util');
+const { isLoggedIn } = require('./middlewares/guards');
 
 start();
 

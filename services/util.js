@@ -39,16 +39,6 @@ async function comparePassword(password, hashedPassword) {
     return bcrypt.compare(password, hashedPassword);
 }
 
-function isLoggedIn() {
-    return function (req, res, next) {
-        if (req.session.user) {
-            next();
-        } else {
-            res.redirect('/login');
-        }
-    };
-}
-
 function mapError(error) {
     if (Array.isArray(error)) {
         return error;
@@ -80,6 +70,5 @@ module.exports = {
     payModel,
     hashPassword,
     comparePassword,
-    isLoggedIn,
     mapError
 };

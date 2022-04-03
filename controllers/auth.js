@@ -1,14 +1,15 @@
 const { Router } = require('express');
 const { body, validationResult } = require('express-validator');
 const { mapError} = require('../services/util');
+const {isGuest} = require('../middlewares/guards')
 
 const router = Router();
 
-router.get('/register', (req, res) => {
+router.get('/register', isGuest(), (req, res) => {
     res.render('register', { title: 'Register' });
 });
 
-router.post('/register',
+router.post('/register',isGuest(),
     body('username').trim(),
     body('password').trim(),
     body('repeatPassword').trim(),
@@ -36,11 +37,11 @@ router.post('/register',
         }
     });
 
-router.get('/login', (req, res) => {
+router.get('/login', isGuest(), (req, res) => {
     res.render('login', { title: 'Login' });
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', isGuest(), async (req, res) => {
     try {
         await req.auth.login(req.body.username, req.body.password);
         res.redirect('/');
