@@ -8,7 +8,8 @@ const authService = require('./services/auth');
 const { home } = require('./controllers/home');
 const { about } = require('./controllers/about');
 const createPay = require('./controllers/createPay');
-const {profile} = require('./controllers/profile');
+const { profile } = require('./controllers/profile');
+const user = require('./controllers/user');
 const editPay = require('./controllers/editPay');
 const deletePay = require('./controllers/delete');
 const authController = require('./controllers/auth');
@@ -48,7 +49,12 @@ async function start() {
         .get(isLoggedIn(), createPay.get)
         .post(isLoggedIn(), createPay.post);
 
-        app.get('/profile', isLoggedIn(), couting(), profile);
+    app.route('/user')
+        .get(isLoggedIn(), user.get)
+        .post(isLoggedIn(), user.post);
+
+    app.get('/profile', isLoggedIn(), couting(), profile);
+    ;
 
     app.route('/editPay/:id')
         .get(isLoggedIn(), editPay.get)

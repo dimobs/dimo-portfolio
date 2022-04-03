@@ -1,8 +1,9 @@
 const User = require('../models/Users');
 
 async function register(session, username, password) {
-    getUserByUsername(username);
-    if (user) {
+    const existing = await getUserByUsername(username);
+
+    if (existing) {
         throw new Error('Username is taken')
     }
     const user = new User({
@@ -29,7 +30,6 @@ async function login(session, username, password) { //req.session, ...params
 // if(!user){
 //     throw new Error(`User doesn\'t exist`);
 // }
-
     if (user && await user.comparePassword(password)) {
         session.user = {
             id: user._id,
