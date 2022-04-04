@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { body, validationResult } = require('express-validator');
 const { mapError} = require('../services/util');
-const {isGuest} = require('../middlewares/guards')
+const {isGuest, isLoggedIn} = require('../middlewares/guards')
 
 const router = Router();
 
@@ -53,7 +53,7 @@ router.post('/login', isGuest(), async (req, res) => {
     }
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', isLoggedIn(), (req, res) => {
     req.auth.logout();
     res.redirect('/');
 });

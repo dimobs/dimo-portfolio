@@ -1,4 +1,5 @@
 const User = require('../models/Users');
+const {userSession} = require('../middlewares/userSession');
 
 async function register(session, username, password) {
     const existing = await getUserByUsername(username);
@@ -76,3 +77,21 @@ module.exports = () => (req, res, next) => {
 
     next();
 }
+
+
+
+// module.exports = () => (req, res, next) => {
+//     if (req.session.user) {
+//         res.locals.user = req.session.user;
+//         res.locals.hasUser = true;
+//     }
+
+//     req.auth = {
+//         register: (...params) => register(req.session, ...params),
+//         login: (...params) => login(req.session, ...params),
+//         userUpdate: (...params) => userUpdate(req.session, ...params),
+//         logout: () => logout(req.session)
+//     };
+
+//     next();
+// }
