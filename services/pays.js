@@ -57,6 +57,10 @@ async function deleteById(id, ownerId) {
     return true;
 }
 
+// async function getPayById(id) {
+//    return Pay.findById(id).populate('owner', 'sender', 'resiver');
+// }
+
 
 module.exports = () => (req, res, next) => {
     req.storage = {
@@ -64,7 +68,8 @@ module.exports = () => (req, res, next) => {
         getAll,
         getById,
         updateById,
-        deleteById
+        deleteById,
+        // getPayById
     };
     next();
 };

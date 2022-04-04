@@ -44,7 +44,7 @@ router.get('/login', isGuest(), (req, res) => {
 router.post('/login', isGuest(), async (req, res) => {
     try {
         await req.auth.login(req.body.username, req.body.password);
-        res.redirect('/');
+        res.redirect('/paymentHistory');
     } catch (err) {
         const reLogin = req.body.username;
         console.error(err.message);

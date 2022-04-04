@@ -29,20 +29,20 @@ async function start() {
     app.use(payService());
     app.use(authService());
 
-    function couting() {
-        return function (req, res, next) {
-            if (req.session.view) {
-                req.session.view++;
-            } else {
-                req.session.view = 1;
-            }
-            next();
-        };
-    }
+    // function couting() {
+    //     return function (req, res, next) {
+    //         if (req.session.view) {
+    //             req.session.view++;
+    //         } else {
+    //             req.session.view = 1;
+    //         }
+    //         next();
+    //     };
+    // }
 
     app.get('/', home);
     app.get('/administrator', administrator);
-    app.get('/paymentHistory', isLoggedIn(), couting(), paymentHistory);
+    app.get('/paymentHistory', isLoggedIn(), paymentHistory);
     app.get('/about', about);
 
     app.route('/createPay')
@@ -53,7 +53,7 @@ async function start() {
         .get(isLoggedIn(), user.get)
         .post(isLoggedIn(), user.post);
 
-    app.get('/profile', isLoggedIn(), couting(), profile);
+    app.get('/profile', isLoggedIn(), profile);
     ;
 
     app.route('/editPay/:id')

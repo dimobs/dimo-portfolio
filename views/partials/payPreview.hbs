@@ -4,7 +4,8 @@
     <td>{{resiver}}</td>
     <td>{{amount}}</td>
     <td>{{description}}</td>
-      {{#if isOwner}}
+    <td><p>Total rating of votes: {{rating}}</p></td>
+    {{#if isOwner}}
      <td><a class="btnAction" href="/editPay/{{id}}">edit</a></td>
     <td><a class="btnAction" href="/delete/{{id}}">delete</a></td>
    {{/if}}

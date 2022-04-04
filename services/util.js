@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { post } = require('../controllers/editPay');
 
 
 function accessoryViewModel(accessory) {
@@ -21,7 +22,9 @@ function payModel(pay) {
         amount: pay.amount,
         description: pay.description,
         date: pay.date,
-        owner: pay.owner
+        owner: pay.owner,
+        votes: post.votes,
+        rating: post.rating,
     };
 
     // if (model.accessories.length > 0 && model.accessories[0].name) {

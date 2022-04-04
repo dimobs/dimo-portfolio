@@ -7,12 +7,12 @@ const paySchema = new Schema({
     sender: { type: String, require: false, minlength: [3, 'Pay listing name must be at least 3 characters long'] },
     resiver: { type: String, require: false, minlength: [3, 'Pay listing name must be at least 3 characters long'] },
     imageUrl: { type: String, require: false,
-        validate:{
-            validator(value) {
-                return URL_PATTERN.test(value);
-            },
-            message: 'Image must be a valid URL'
-        }
+    //     validate:{
+    //         validator(value) {
+    //             return URL_PATTERN.test(value);
+    //         },
+    //         message: 'Image must be a valid URL'
+    //     }
     },
     description: { type: String },
     date: {
