@@ -4,7 +4,7 @@ const  {getPayById}  = require('../services/pays');
 module.exports = {
     async paymentHistory(req, res) {
    
-        // const tablePays = await req.storage.getAll({});
+        const tablePays = await req.storage.getAll({});
         // const id = req.session.user.id; //req.params.id
         // const post = payModel(await getPayById(id));
         // console.log(post);
