@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { body, validationResult } = require('express-validator');
-const { mapError} = require('../services/util');
-const {isGuest, isLoggedIn} = require('../middlewares/guards')
+const { mapError } = require('../services/util');
+const { isGuest, isLoggedIn } = require('../middlewares/guards')
 
 const router = Router();
 
@@ -9,10 +9,11 @@ router.get('/register', isGuest(), (req, res) => {
     res.render('register', { title: 'Register' });
 });
 
-router.post('/register',isGuest(),
+router.post('/register', isGuest(),
     body('username').trim(),
     body('password').trim(),
     body('repeatPassword').trim(),
+    body('email').trim(),
     body('username')
         .isLength({ min: 3 }).withMessage('Username must be at least 3 characters long')
         .isAlphanumeric().withMessage('Username may contain only alphanumeric characters'),
@@ -29,11 +30,12 @@ router.post('/register',isGuest(),
             if (errors.length > 0) {
                 throw errors;
             }
-            await req.auth.register(req.body.username, req.body.password);
+            await req.auth.register(req.body.username, req.body.password, req.body.email, req.body.gender,);
             res.redirect('/');
         } catch (err) {
+            const isMale = req.body.gender == "male";
             res.locals.errors = mapError(err);
-            res.render('register', { title: 'Register', data: { username: req.body.username, password: req.body.password } });
+            res.render('register', { title: 'Register', data: { isMale, username: req.body.username, password: req.body.password, repeatPassword: req.body.repeatPassword, email: req.body.email } });
         }
     });
 
@@ -43,11 +45,14 @@ router.get('/login', isGuest(), (req, res) => {
 
 router.post('/login', isGuest(), async (req, res) => {
     try {
+        // const user = await (req.body.username, req.body.password);
+        // req.session.user = user;
         await req.auth.login(req.body.username, req.body.password);
-        res.redirect('/paymentHistory');
+        res.redirect('/');
     } catch (err) {
         const reLogin = req.body.username;
         console.error(err.message);
+        const errors = mapError(err);
         res.locals.errors = [{ msg: err.message }];
         res.render('login', { title: 'Login', reLogin });
     }

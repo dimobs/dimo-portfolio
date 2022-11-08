@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 function isLoggedIn() {
     return function (req, res, next) {
         if (req.session.user) {
@@ -18,7 +20,19 @@ function isGuest() {
     };
 }
 
+function isOwner() {
+    return function (req, res, next) {
+        const userId = req.session.user?.id;
+        if(req.locals.trip.owner == userId){
+            next();
+        }else {
+            res.redirect('/login');
+        }
+    };
+}
+
 module.exports = {
     isLoggedIn,
-    isGuest
+    isGuest,
+    isOwner
 }

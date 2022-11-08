@@ -14,10 +14,12 @@
     <div class="container">
         <header>
           <ul>
-            <li><a href="/"> <img class="logo" src="/static/images/logo-dimo.png"></a></li>
+            <li><a href="/"> <img class="logo" src="/static/images/logo-dimo.png"></a></li> 
             {{#if hasUser}}
             <li><a href="/administrator">Admin</a></li>
             <li><a href="/logout">Logout</a></li>
+               <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout as {{user.username}}</a>
             {{else}}
              <li><a href="/login">Login</a></li>
             <li><a href="/register">Register</a></li>
@@ -36,7 +38,7 @@
 
 
       <main>  
-                {{#if errors}}
+      {{#if errors}}
       <div id="notifications">
         {{#each errors}}
       <p>{{msg}}</p>
