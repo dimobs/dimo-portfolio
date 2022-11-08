@@ -2,7 +2,7 @@ const { mapError } = require('../services/util')
 
 module.exports = {
     get(req, res) {
-        res.render('createPay', { title: "CreatePay Listing" })
+        res.render('createTrip', { title: "CreateTrip Listing" })
     },
 
     async post(req, res) {

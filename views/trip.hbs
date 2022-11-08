@@ -1,0 +1,55 @@
+<head>
+     <link href="/static/static-template/css/style.css" type="text/css" rel="stylesheet">
+</head>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <!-- Do not forget to change the path to the images -->
+             <img class="logo" src="../static/static-template/images/before.png" alt="before-logo">
+            
+            <img class="car logo" src="../static/static-template/images/trip-logo.png" alt="trip-logo">
+            <img class="logo" src="../static/static-template/images/after.png" alt="after-logo">
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                <ul class="navbar-nav ml-auto">
+                    <!-- Guest users and Logged users -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/trips">Shared Trips</a>
+                    </li>
+                    <!-- Logged users -->
+                    {{#if hasUser}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/createTrip">Offer Trip</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout as [ {{user.username}} ]</a>
+                    </li>
+                      {{else}}   <!-- Guest users -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                        </li>             
+                 {{/if}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+      <main>  
+      {{#if errors}}
+      <div id="notifications">
+        {{#each errors}}
+      <p>{{msg}}</p>
+        {{/each}}
+      </div>
+        {{/if}}     
+       {{{body}}}
+      </main>

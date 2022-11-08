@@ -1,7 +1,7 @@
 const User = require('../models/Users');
 const {userSession} = require('../middlewares/userSession');
 
-async function register(session, username, password) {
+async function register(session, username, password, email, gender ) {
     const existing = await getUserByUsername(username);
 
     if (existing) {
@@ -9,7 +9,9 @@ async function register(session, username, password) {
     }
     const user = new User({
         username,
-        hashedPassword: password
+        email,
+        hashedPassword: password,
+        gender
     });
     await user.save();
 
@@ -19,7 +21,6 @@ async function register(session, username, password) {
     };
 };
 
-//TODO vertity user uniq
 async function getUserByUsername(username) {
     const user = await User.findOne({ username: new RegExp(`^${username}$`, 'i') });
     return user;
@@ -27,10 +28,7 @@ async function getUserByUsername(username) {
 
 async function login(session, username, password) { //req.session, ...params
     const user = await User.findOne({ username });
-// const user = await getUserByUsername(username)
-// if(!user){
-//     throw new Error(`User doesn\'t exist`);
-// }
+    
     if (user && await user.comparePassword(password)) {
         session.user = {
             id: user._id,

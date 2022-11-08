@@ -43,6 +43,7 @@ async function comparePassword(password, hashedPassword) {
 }
 
 function mapError(error) {
+    console.log(error);
     if (Array.isArray(error)) {
         return error;
     } else if (error.name == 'MongoServerError') {

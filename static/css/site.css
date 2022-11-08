@@ -433,3 +433,36 @@ td:last-child {
 tr:last-child td {
     border-bottom-width: 0;
 }
+
+/*
+ot shared trip 
+*/
+.login-page>h1, .register-page>h1, .offer-trip>h1 {
+    margin: 2%;
+    text-align: center;
+  }
+
+  .login, .register {
+    width: 40%!important;
+  }
+
+  .form-group textarea {
+    resize: none;
+  }
+
+  div.container .register, div.container .login {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+  }
+
+  div.container .register, div.container .login {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+  }
+
+  .edit textarea.form-control, .offer-trip textarea.form-control {
+    width: 100%;
+    height: 90px;
+  }

@@ -16,6 +16,6 @@ module.exports = (app) => {
         cookie: { secure: 'auto' }
     }));
     app.use(express.urlencoded({ extended: true })); //парсва бодито при POST заявки
-    app.use(userSession())
+    app.use(userSession());
     app.use('/static', express.static('static')); //сервирва статични файлове
 }

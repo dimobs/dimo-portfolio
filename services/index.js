@@ -7,7 +7,7 @@ const recordService = require('./services/records');
 const authService = require('./services/auth');
 
 const { home } = require('./controllers/home');
-// const { trip } = require('./controllers/trip');
+const { trip } = require('./controllers/trip');
 const { about } = require('./controllers/about');
 const createPay = require('./controllers/createPay');
 const createTrip = require('./controllers/createTrip');
@@ -46,7 +46,7 @@ async function start() {
     // }
 
     app.get('/', home);
-    // app.get('/trip', trip);
+    app.get('/trip', trip);
     app.get('/administrator', administrator);
     app.get('/paymentHistory', isLoggedIn(), paymentHistory);
     app.get('/about', about);
