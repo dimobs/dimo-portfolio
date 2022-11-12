@@ -13,7 +13,7 @@ module.exports = (app) => {
         secret: 'my super duper secret',
         resave: false,
         saveUninitialized: true,
-        cookie: { secure: 'auto' }
+        cookie: { secure: 'auto' } //за сесията - "false" или "auto"
     }));
     app.use(express.urlencoded({ extended: true })); //парсва бодито при POST заявки
     app.use(userSession());

@@ -13,6 +13,7 @@ const userSchema = new Schema({
 userSchema.index({ username: 1 }, {
     unique: true,
     collation: {
+        //keys insensitive
         locale: 'en',
         strength: 2
     }
