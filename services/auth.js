@@ -1,4 +1,4 @@
-const User = require('../models/Users');
+const User = require('../models/Users'); //userSchema
 const {userSession} = require('../middlewares/userSession');
 
 async function register(session, username, password, email, gender ) {

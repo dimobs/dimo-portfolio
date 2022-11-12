@@ -3,6 +3,7 @@ module.exports = () => (req, res, next) => {
         res.locals.user = req.session.user;
         res.locals.hasUser = true;
     }
+    
     next();
 };
 
