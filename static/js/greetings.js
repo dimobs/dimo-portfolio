@@ -13,6 +13,7 @@
         timeOftheDay = ('good evening')
     }
 
+    console.log(timeOftheDay);
     return timeOftheDay;
 }
 

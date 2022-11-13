@@ -468,7 +468,8 @@ ot shared trip
   }
 
   .welcome1 {
-text-align: right;
+    margin: 20px;
+text-align: center;
     color: green;
     text-transform: capitalize;
 font-size: 44px;
