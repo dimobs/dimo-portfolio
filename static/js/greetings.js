@@ -1,5 +1,5 @@
 
-export function greet() {
+ function greet() {
 
     const today = new Date()
     const curHr = today.getHours()
@@ -15,3 +15,5 @@ export function greet() {
 
     return timeOftheDay;
 }
+
+module.exports = greet;
