@@ -466,3 +466,10 @@ ot shared trip
     width: 100%;
     height: 90px;
   }
+
+  .welcome1 {
+    color: green;
+    text-align: right;
+    text-transform: capitalize;
+font-size: 44px;
+}
