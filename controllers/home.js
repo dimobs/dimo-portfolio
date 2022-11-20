@@ -5,7 +5,7 @@
 // })
 // w
 
-const greet = require("../static/js/greetings.js");
+const {greet} = require("../static/js/greetings.js");
 const time = greet();
 
 module.exports = {

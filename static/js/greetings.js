@@ -1,7 +1,6 @@
+const today = new Date();
 
- function greet() {
-
-    const today = new Date()
+function greet() {
     const curHr = today.getHours()
     let timeOftheDay;
 
@@ -13,8 +12,19 @@
         timeOftheDay = ('good evening')
     }
 
-    console.log(timeOftheDay);
     return timeOftheDay;
 }
 
-module.exports = greet;
+function dateBgFormat() {
+    const month = today.getUTCMonth() + 1; //months from 1-12
+    const day = today.getUTCDate();
+    const year = today.getUTCFullYear();
+
+    const newdate = day + "/" + month + "/" + year;
+    return newdate
+}
+
+module.exports = {
+    greet,
+    dateBgFormat
+};

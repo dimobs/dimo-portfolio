@@ -34,7 +34,6 @@ module.exports = {
             res.locals.errors = mapError(err);
             res.render('404', { title: 'User Info', data: { username: req.body.username } });
         }
-
     }
 }
 

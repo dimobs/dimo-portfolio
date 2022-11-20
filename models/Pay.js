@@ -16,15 +16,15 @@ const paySchema = new Schema({
     },
     description: { type: String },
     date: {
-        type: String, require:false, 
-        // minlength: [10, `Data must be 10 characters longn`],
-        // maxlength: [10, 'Data must be 10 characters long']
+        type: String, require:false, default: Date.now,
+        minlength: [10, `Data must be 10 characters longn`],
+        maxlength: [10, 'Data must be 10 characters long']
     },
     amount: { type: Number, require: true },
     isDeleted: { type: Boolean, default: false },
     owner: { type: ObjectId, ref: 'User', require: true },
-    // votes: {type: [ObjectId], ref:'User', default: []},
-    // rating: { type: Number, default: 0}
+    votes: {type: [ObjectId], ref:'User', default: []},
+    rating: { type: Number, default: 0}
 });
 
 const Pay = model('Pay', paySchema);

@@ -1,10 +1,9 @@
 const { Schema, model, Types: {ObjectId} } = require('mongoose');
 const { comparePassword, hashPassword } = require('../services/util');
 
-
 const userSchema = new Schema({
     username: { type: String, required: true, minlength: 3, unique: true },
-    email: { type: String, required: false, minlength: 3, unique: true },
+    email: { type: String, required: false, unique: true },
     gender: { type: String, required: false},
     hashedPassword: { type: String, required: true },
     trips: {type: [ObjectId], ref: 'Trip', default: []}

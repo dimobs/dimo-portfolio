@@ -21,6 +21,8 @@ module.exports = {
                 }
             });
         }
-        res.render('paymentHistory', { tablePays});
+        res.render('paymentHistory', {title: "History", tablePays});
+        
+
       }
 }

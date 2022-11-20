@@ -12,7 +12,7 @@ module.exports = {
             amount: Number(req.body.amount),
             description: req.body.description || 'No Description',
             imageUrl: req.body.imageUrl,
-            date: req.body.date || 'dd/mm/yyyy',
+            date: req.body.date,
             owner: req.session.user.id,
         };
       

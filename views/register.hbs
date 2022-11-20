@@ -10,16 +10,12 @@
 
    <label for="email">Email address</label>
         <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" value="{{data.email}}">
-        
-        <label>Gender</label>    
+        <p>Gender</p>    
         <input type="radio" id="female" name="gender" value="female" {{#unless data.isMale}}checked{{/unless}}>
         <label for="female">Female</label>
         <input type="radio" id="male" name="gender" value="male" {{#if data.isMale}}checked{{/if}}>
         <label for="male">Male</label>
-           
-                       
-                       
-                            <p>Already have account? <a style="color:red" href="/login">Login Now!</a></p>
+        <p>Already have account? <a style="color:red" href="/login">Login Now!</a></p>
                        
         <input type="submit" value="Register">
     </form>

@@ -35,7 +35,14 @@ router.post('/register', isGuest(),
         } catch (err) {
             const isMale = req.body.gender == "male";
             res.locals.errors = mapError(err);
-            res.render('register', { title: 'Register', data: { isMale, username: req.body.username, password: req.body.password, repeatPassword: req.body.repeatPassword, email: req.body.email } });
+            res.render('register', { 
+                title: 'Register', data: { 
+                isMale, 
+                username: req.body.username, 
+                password: req.body.password, 
+                repeatPassword: req.body.repeatPassword, 
+                email: req.body.email
+             } });
         }
     });
 
@@ -48,7 +55,8 @@ router.post('/login', isGuest(), async (req, res) => {
         // const user = await (req.body.username, req.body.password);
         // req.session.user = user;
         await req.auth.login(req.body.username, req.body.password);
-        res.redirect('/');
+    res.redirect('/paymentHistory');
+        // res.redirect('/');
     } catch (err) {
         const reLogin = req.body.username;
         console.error(err.message);

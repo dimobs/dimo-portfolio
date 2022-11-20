@@ -20,15 +20,15 @@
             <option value="Dimo" selected>Dimo Yankov Karachorbadzhiev</option>
             <option value="Ivanka">Ivanka Dimova Karachorbadzhieva</option>
         </select>
-
         <label for="date">Data:</label>
-        <input name="date" type='text' value="{{pay.date}}" placeholder="18.02.21">
+        <p style="display:inline-block; color: grey">Format: dd/mm/yyyy</p>
+        <input name="date" type="text" value="{{dateBg}}" placeholder="{{dateBg}}">
         <label for="amount">Amount:</label>
-        <input placeholder="0.00*" id="price" name="amount" value="{{pay.amount}}">
-        <label for="description">Description:</label>
-        <textarea id="name" placeholder="Pay for..."{{pay.description}} name="description"></textarea>
+        <input placeholder="0.00*" id="price" name="amount" value="">
+        <label style="display: block; margin-top: 2em" for="description">Description:</label>
+        <textarea id="name" placeholder="Pay for?" name="description"></textarea>
         <label for="imageURL">IMAGE:</label>
-        <input type="text" placeholder="Add image" id="image" name="imageUrl" value="{{pay.imageUrl}}">
+        <input type="text" placeholder="Add image" id="image" name="imageUrl" value="">
         <input type="submit" value="Publish">
     </form>
 </div>
