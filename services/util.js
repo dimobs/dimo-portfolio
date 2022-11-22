@@ -23,8 +23,8 @@ function payModel(pay) {
         description: pay.description,
         date: pay.date,
         owner: pay.owner,
-        votes: post.votes,
-        rating: post.rating,
+        votes: pay.votes,
+        rating: pay.rating,
     };
 
     // if (model.accessories.length > 0 && model.accessories[0].name) {

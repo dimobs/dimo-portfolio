@@ -1,7 +1,6 @@
 const Trip = require('../models/Trip');
 const Pay = require('../models/Pay');
 const { payModel } = require('./util');
-const { post } = require('../controllers/editPay');
 
 async function getById(id, dataBase) {
     if(dataBase == "pay"){
@@ -72,15 +71,15 @@ return Pay.findByIdAndDelete(id);
 };
 
 async function vote(postId, userId, value) {
-const post = await Pay.findById(postId);
+const pay = await Pay.findById(postId);
 
-if(post.votes.includes(userId)) {
+if(pay.votes.includes(userId)) {
     throw new Error('User has already voted')
 }
-post.votes.push(userId);
-post.rating += value;
+pay.votes.push(userId);
+pay.rating += value;
 
-await post.save();
+await pay.save();
 }
 
 // async function getPayById(id) {

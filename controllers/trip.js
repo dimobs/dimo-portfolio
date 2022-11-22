@@ -6,7 +6,6 @@ res.render('create', { title: 'Create Trip Offer'})
 });
 
 router.post('/createTrip', isLoggedIn(), (req, res) => {
-    console.log(req.body);
 re.redirect('/trips');
 });
 

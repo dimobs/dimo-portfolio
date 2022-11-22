@@ -78,14 +78,14 @@ router.get('/vote/:id/:type', isLoggedIn(), async (req, res) => {
     const value = req.params.type == 'approve' ? 1 : -1;
 
     try {
-        req.storage.vote(id, req.session.user.id, value)
+      await req.storage.vote(id, req.session.user.id, value)
       
-        res.redirect('/catalog' + id);
+        res.redirect('/paymentHistory');
     } catch (err) {
         console.error(err.message);
         const errors = mapError(err);
         res.locals.errors = [{ msg: err.message }];
-        res.render('paymentHistory', { title: 'Details', errors });
+        res.render('paymentHistory', { title: 'History', errors });
     }
 })
 
