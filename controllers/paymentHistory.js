@@ -18,7 +18,6 @@ module.exports = {
 
         } else {
              tablePays.map(pay => {
-                console.log(pay);
                 pay.isLoggedIn = true;
                 if (req.session.user && req.session.user.id == pay.owner) {
                     pay.isOwner = true;

@@ -3,14 +3,14 @@ const Pay = require('../models/Pay');
 const { payModel } = require('./util');
 
 async function getById(id, dataBase) {
-    if(dataBase == "pay"){
+    if (dataBase == "pay") {
         const item = await Pay.findById(id).where({ isDeleted: false });
         if (item) {
             return payModel(item);
         } else {
             return undefined;
         }
-    }else {
+    } else {
         const item = await Trip.findById(id);
         if (item) {
             return payModel(item);
@@ -46,7 +46,7 @@ async function updateById(id, pay, ownerId) {
     if (existing.owner != ownerId) {
         return false;
     }
-    
+
     existing.sender = pay.sender;
     existing.resiver = pay.resiver;
     existing.description = pay.description || undefined;
@@ -67,19 +67,19 @@ async function updateById(id, pay, ownerId) {
 //     }
 
 async function deleteById(id) {
-return Pay.findByIdAndDelete(id);
+    return Pay.findByIdAndDelete(id);
 };
 
 async function vote(postId, userId, value) {
-const pay = await Pay.findById(postId);
+    const pay = await Pay.findById(postId);
 
-if(pay.votes.includes(userId)) {
-    throw new Error('User has already voted')
-}
-pay.votes.push(userId);
-pay.rating += value;
+    if (pay.votes.includes(userId)) {
+        throw new Error('User has already voted')
+    }
+    pay.votes.push(userId);
+    pay.rating += value;
 
-await pay.save();
+    await pay.save();
 }
 
 // async function getPayById(id) {

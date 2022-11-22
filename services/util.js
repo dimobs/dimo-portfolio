@@ -1,6 +1,4 @@
 const bcrypt = require('bcrypt');
-const { post } = require('../controllers/editPay');
-
 
 function accessoryViewModel(accessory) {
     // return {
@@ -23,7 +21,7 @@ function payModel(pay) {
         description: pay.description,
         date: pay.date,
         owner: pay.owner,
-        votes: pay.votes,
+        votes: pay.votes.map(voterViewModel),
         rating: pay.rating,
     };
 
@@ -65,6 +63,14 @@ function mapError(error) {
         return [{
             msg: 'Request error'
         }];
+    }
+}
+
+function voterViewModel(user){
+    return {
+        id: user._id,
+        email: user.email,
+        user: user.username
     }
 }
 
