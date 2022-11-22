@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { body, validationResult } = require('express-validator');
 const { mapError } = require('../services/util');
 const { isGuest, isLoggedIn } = require('../middlewares/guards')
+const {vote} = require('../services/post')
 
 const router = Router();
 
@@ -35,14 +36,15 @@ router.post('/register', isGuest(),
         } catch (err) {
             const isMale = req.body.gender == "male";
             res.locals.errors = mapError(err);
-            res.render('register', { 
-                title: 'Register', data: { 
-                isMale, 
-                username: req.body.username, 
-                password: req.body.password, 
-                repeatPassword: req.body.repeatPassword, 
-                email: req.body.email
-             } });
+            res.render('register', {
+                title: 'Register', data: {
+                    isMale,
+                    username: req.body.username,
+                    password: req.body.password,
+                    repeatPassword: req.body.repeatPassword,
+                    email: req.body.email
+                }
+            });
         }
     });
 
@@ -55,7 +57,7 @@ router.post('/login', isGuest(), async (req, res) => {
         // const user = await (req.body.username, req.body.password);
         // req.session.user = user;
         await req.auth.login(req.body.username, req.body.password);
-    res.redirect('/paymentHistory');
+        res.redirect('/paymentHistory');
         // res.redirect('/');
     } catch (err) {
         const reLogin = req.body.username;
@@ -70,5 +72,21 @@ router.get('/logout', isLoggedIn(), (req, res) => {
     req.auth.logout();
     res.redirect('/');
 });
+
+router.get('/vote/:id/:type', isLoggedIn(), async (req, res) => {
+    const id = req.params.id;
+    const value = req.params.type == 'approve' ? 1 : -1;
+
+    try {
+        req.storage.vote(id, req.session.user.id, value)
+      
+        res.redirect('/catalog' + id);
+    } catch (err) {
+        console.error(err.message);
+        const errors = mapError(err);
+        res.locals.errors = [{ msg: err.message }];
+        res.render('paymentHistory', { title: 'Details', errors });
+    }
+})
 
 module.exports = router;

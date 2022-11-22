@@ -4,8 +4,24 @@
     <td>{{resiver}}</td>
     <td>{{amount}}</td>
     <td>{{description}}</td>
+
+    {{#if isLoggedIn}}
     {{#if isOwner}}
      <td><a class="btnAction" href="/editPay/{{id}}">Edit</a></td>
     <td><a class="btnAction" href="/delete/{{id}}">Delete</a></td>
+    {{else}}
+    {{#if hasVoted}}
+        <div class="social-btn">
+         <!-- Only for registered user and author of the post -->
+        <td><a  class="btnAction" href="/vote/{{id}}/approve" class="vote-up">Approved +1</a></td> 
+        <td> <a  class="btnAction" href="/vote/{{id}}/disapproved" class="vote-down">Disapproved -1</a></td> 
+               <!-- logged in user who has already voted-->
+            <td><p class="PV">Votes: 0</p></td>   
+            {{else}}
+          <td class="thanks-for-vote">Thanks For Raiting</td>
+      </div>
    {{/if}}
+   {{/if}}
+   {{/if}}
+
 

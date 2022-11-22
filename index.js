@@ -4,7 +4,7 @@ const expressConfig = require('./config/express');
 const initDB = require('./config/database');
 const routesConfig = require('./config/routes');
 
-const recordService = require('./services/records');
+const recordService = require('./services/post');
 const authService = require('./services/auth');
 
 const { home } = require('./controllers/home');

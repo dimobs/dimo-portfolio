@@ -1,6 +1,7 @@
 const Trip = require('../models/Trip');
 const Pay = require('../models/Pay');
 const { payModel } = require('./util');
+const { post } = require('../controllers/editPay');
 
 async function getById(id, dataBase) {
     if(dataBase == "pay"){
@@ -43,11 +44,10 @@ async function createTrip(trip) {
 
 async function updateById(id, pay, ownerId) {
     const existing = await Pay.findById(id).where({ isDeleted: false });
-
     if (existing.owner != ownerId) {
         return false;
     }
-
+    
     existing.sender = pay.sender;
     existing.resiver = pay.resiver;
     existing.description = pay.description || undefined;
@@ -61,14 +61,26 @@ async function updateById(id, pay, ownerId) {
     return true;
 }
 
-async function deleteById(id, ownerId) {
-       const existing = await Pay.findById(id).where({ isDeleted: false });
-    if (existing.owner != ownerId) {
-        return false;
-    }
+// async function deleteById(id, ownerId) {
+//        const existing = await Pay.findById(id).where({ isDeleted: false });
+//     if (existing.owner != ownerId) {
+//         return false;
+//     }
 
-    await Pay.findByIdAndUpdate(id, { isDeleted: true });
-    return true;
+async function deleteById(id) {
+return Pay.findByIdAndDelete(id);
+};
+
+async function vote(postId, userId, value) {
+const post = await Pay.findById(postId);
+
+if(post.votes.includes(userId)) {
+    throw new Error('User has already voted')
+}
+post.votes.push(userId);
+post.rating += value;
+
+await post.save();
 }
 
 // async function getPayById(id) {
@@ -84,6 +96,7 @@ module.exports = () => (req, res, next) => {
         updateById,
         deleteById,
         createTrip,
+        vote
         // getPayById
     };
     next();
