@@ -19,19 +19,13 @@
             <li><a href="/administrator">Admin</a></li>
             <li><a href="/logout">Logout</a></li>
                <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout as {{user.username}}</a>
+           {{!-- <a class="nav-link" href="/logout">Logout as {{user.username}}</a> --}}
+            <li><a href="/profile" id="greeting">Profile {{user.username}}</a></li>
             {{else}}
              <li><a href="/login">Login</a></li>
             <li><a href="/register">Register</a></li>
             {{/if}}
             <li><a href="/about">About</a></li>
-            {{#if hasUser}}
-            <li><a href="/profile" id="greeting"></a></li>
-             {{!-- <li><h4 <b style="color:white">{{user.username}}</b></h4></li> --}}
-            {{else}}
-            <li><a style="color:white" href="/login" id="greeting"> user: Anonymus</a></li>
-            {{!-- <li><h4>user:<a href="/login" style="color:white">Anonymus</a></h4></li> --}}
-            {{/if}}
           </ul>
         </header>   
       <div class="header_bottom"></div>

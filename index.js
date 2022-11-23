@@ -65,7 +65,6 @@ async function start() {
         .post(isLoggedIn(), user.post);
 
     app.get('/profile', isLoggedIn(), profile);
-    ;
 
     app.route('/editPay/:id')
         .get(isLoggedIn(), editPay.get)

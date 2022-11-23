@@ -2,10 +2,12 @@
 <div class="form">
     <form action="/login" method="POST">
         <label for="username">Username</label>
-        <input type="text" id="username" name="username" value="{{reLogin}}">
+        
+        <input type="text" id="username" name="username" value="dimo">
+        {{!-- <input type="text" id="username" name="username" value="{{reLogin}}"> --}}
 
         <label for="password">Password</label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="password" value="123">
         <input type="submit" value="Login">
           <p>Not registered yet? <a style="color:red" href="/register">Register Now!</a></p>
 

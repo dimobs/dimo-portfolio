@@ -1,6 +1,5 @@
 const { payModel } = require('../services/util');
 const { getPayById } = require('../services/post');
-// const { post } = require('./editPay');
 
 module.exports = {
     async paymentHistory(req, res) {

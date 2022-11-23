@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+require('../models/Users')
 require('../models/Pay');
-require('../models/Trip');
+// require('../models/Trip');
 
 
 const dbName = 'potfolio'

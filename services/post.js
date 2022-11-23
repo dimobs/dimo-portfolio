@@ -1,4 +1,4 @@
-const Trip = require('../models/Trip');
+// const Trip = require('../models/Trip');
 const Pay = require('../models/Pay');
 const { payModel } = require('./util');
 
@@ -36,10 +36,10 @@ async function createPay(pay) {
     await result.save();
 }
 
-async function createTrip(trip) {
-    const result = new Trip(trip);
-    await result.save();
-}
+// async function createTrip(trip) {
+//     const result = new Trip(trip);
+//     await result.save();
+// }
 
 async function updateById(id, pay, ownerId) {
     const existing = await Pay.findById(id).where({ isDeleted: false });
@@ -82,6 +82,10 @@ async function vote(postId, userId, value) {
     await pay.save();
 }
 
+async function getPostByAuthor(userId) {
+    return Pay.find({owner: userId})
+}
+
 // async function getPayById(id) {
 //    return Pay.findById(id).populate('owner', 'sender', 'resiver');
 // }
@@ -95,7 +99,8 @@ module.exports = () => (req, res, next) => {
         updateById,
         deleteById,
         createTrip,
-        vote
+        vote, 
+        getPostByAuthor
         // getPayById
     };
     next();

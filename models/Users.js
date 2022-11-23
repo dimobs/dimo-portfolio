@@ -6,7 +6,7 @@ const userSchema = new Schema({
     email: { type: String, required: false, unique: true },
     gender: { type: String, required: false},
     hashedPassword: { type: String, required: true },
-    trips: {type: [ObjectId], ref: 'Trip', default: []}
+    // trips: {type: [ObjectId], ref: 'Trip', default: []}
 });
 
 userSchema.index({ username: 1 }, {

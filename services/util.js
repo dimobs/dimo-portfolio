@@ -28,7 +28,7 @@ function payModel(pay) {
     // if (model.accessories.length > 0 && model.accessories[0].name) {
     //     model.accessories = model.accessories.map(accessoryViewModel);
     // }
-
+ 
     return model;
 }
 
@@ -66,12 +66,14 @@ function mapError(error) {
     }
 }
 
-function voterViewModel(user){
-    return {
+function voterViewModel(user) {
+    const votedUser = {
         id: user._id,
         email: user.email,
-        user: user.username
+        username: user.username
     }
+
+    return votedUser
 }
 
 module.exports = {
