@@ -1,4 +1,4 @@
-// const Trip = require('../models/Trip');
+const Trip = require('../models/Trip');
 const Pay = require('../models/Pay');
 const { payModel } = require('./util');
 
@@ -70,17 +70,18 @@ async function deleteById(id) {
     return Pay.findByIdAndDelete(id);
 };
 
-async function vote(postId, userId, value) {
+async function vote(postId, userId, value) { //itme, user, amount
     const pay = await Pay.findById(postId);
 
     if (pay.votes.includes(userId)) {
         throw new Error('User has already voted')
     }
+
     pay.votes.push(userId);
     pay.rating += value;
 
     await pay.save();
-}
+};
 
 async function getPostByAuthor(userId) {
     return Pay.find({owner: userId})
@@ -98,7 +99,7 @@ module.exports = () => (req, res, next) => {
         getById,
         updateById,
         deleteById,
-        createTrip,
+        // createTrip,
         vote, 
         getPostByAuthor
         // getPayById

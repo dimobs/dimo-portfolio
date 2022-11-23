@@ -67,13 +67,13 @@ function mapError(error) {
 }
 
 function voterViewModel(user) {
-    const votedUser = {
+ 
+    return {
         id: user._id,
         email: user.email,
-        username: user.username
+        // username: user.username
     }
 
-    return votedUser
 }
 
 module.exports = {

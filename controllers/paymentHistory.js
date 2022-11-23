@@ -21,7 +21,8 @@ module.exports = {
                 if (req.session.user && req.session.user.id == pay.owner) {
                     pay.isOwner = true;
                 } else {
-                  pay.hasVoted = pay.votes.includes(req.session.user.id)
+                  pay.hasVoted = pay.votes.find(v => v._id == req.session.user._id) != undefined;
+                //   pay.hasVoted = pay.votes.includes(req.session.user.id)
                 }
             });
         }
