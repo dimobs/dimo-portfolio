@@ -4,12 +4,13 @@ const { payModel } = require('./util');
 
 async function getById(id, dataBase) {
     if (dataBase == "pay") {
-        const item = await Pay.findById(id).where({ isDeleted: false });
-        if (item) {
-            return payModel(item);
-        } else {
-            return undefined;
-        }
+        // const item = await Pay.findById(id).where({ isDeleted: false });
+        // if (item) {
+        //     return payModel(item);
+        // } else {
+        //     return undefined;
+        // }
+ return await Pay.findById(id).where({ isDeleted: false }).lean;
     } else {
         const item = await Trip.findById(id);
         if (item) {
