@@ -1,10 +1,10 @@
-const authController = require('../controllers/auth');
-const homeController = require('../controllers/home');
+// const authController = require('../controllers/auth');
+// const homeController = require('../controllers/home');
 // const tripController = require('../controllers/trip');
-const recordService = require('../services/post');
+// const postService = require('../services/post');
 
 module.exports = (app) => {
-    // app.use(authController);
     // app.use(homeController);
+    // app.use(authController);
     // app.use(tripController);
 }

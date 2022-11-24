@@ -16,13 +16,13 @@ module.exports = {
             });
 
         } else {
-             tablePays.map(pay => {
+            tablePays.map(pay => {
                 pay.isLoggedIn = true;
                 if (req.session.user && req.session.user.id == pay.owner) {
                     pay.isOwner = true;
                 } else {
-                  pay.hasVoted = pay.votes.find(v => v._id == req.session.user._id) != undefined;
-                //   pay.hasVoted = pay.votes.includes(req.session.user.id)
+                    pay.hasVoted = pay.votes.find(v => v.id == req.session.user.id) != undefined;
+                    //   pay.hasVoted = pay.votes.includes(req.session.user.id)
                 }
             });
         }
