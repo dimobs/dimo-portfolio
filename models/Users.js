@@ -6,10 +6,11 @@ const userSchema = new Schema({
     email: { type: String, required: false, unique: true },
     gender: { type: String, required: false},
     hashedPassword: { type: String, required: true },
+    // pays: {type: [ObjectId], ref: 'Pay', default: []},
     // trips: {type: [ObjectId], ref: 'Trip', default: []}
 });
 
-userSchema.index({ username: 1 }, {
+userSchema.index({ username: 1 }, { //login with?
     unique: true,
     collation: {
         //keys insensitive

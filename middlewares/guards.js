@@ -23,7 +23,7 @@ function isGuest() {
 function isOwner() {
     return function (req, res, next) {
         const userId = req.session.user?.id;
-        if(req.locals.trip.owner == userId){
+        if(req.locals.data.owner == userId ){
             next();
         }else {
             res.redirect('/login');

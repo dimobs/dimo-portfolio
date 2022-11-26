@@ -1,11 +1,10 @@
-const tripService = require('../services/post');
+const collectionService = {};
 
 function preload(dataBase) {
     return async function (req, res, next){
         const id = req.params.id;
-
-        const trip = await tripService.getById(id, dataBase);
-        res.locals.trip = trip;
+        const data = await collectionService.getById(id, dataBase);
+        res.locals.data = data;
 
         next();
     };
