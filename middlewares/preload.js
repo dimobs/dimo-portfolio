@@ -1,4 +1,4 @@
-const tripService = require('../services/records');
+const tripService = require('../services/post');
 
 function preload(dataBase) {
     return async function (req, res, next){

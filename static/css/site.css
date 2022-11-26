@@ -398,6 +398,7 @@ div.format-404 {
 th,
 td {
     border: 1px solid;
+    text-transform: capitalize;
 }
 
 table {
