@@ -3,7 +3,7 @@ const { comparePassword, hashPassword } = require('../services/util');
 
 const userSchema = new Schema({
     username: { type: String, required: true, minlength: 3, unique: true },
-    email: { type: String, required: false, unique: true },
+    email: { type: String, required: false },
     gender: { type: String, required: false},
     hashedPassword: { type: String, required: true },
     // pays: {type: [ObjectId], ref: 'Pay', default: []},

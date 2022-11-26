@@ -13,10 +13,10 @@
        
         <label class="genderLabel">Gender</label>    
         <div class="gender">
-        <input class="genderDiv" type="radio" id="female" name="gender" value="female" {{#unless data.isMale}}checked{{/unless}}>
         <label class="genderDiv" for="female">Female</label>
-        <input class="genderDiv" type="radio" id="male" name="gender" value="male" {{#if data.isMale}}checked{{/if}}>
+        <input class="genderDiv" type="radio" id="female" name="gender" value="female" {{#unless data.isMale}}checked{{/unless}}>
         <label class="genderDiv" for="male">Male</label>
+        <input class="genderDiv" type="radio" id="male" name="gender" value="male" {{#if data.isMale}}checked{{/if}} >
         </div>
         <p>Already have account? <a style="color:red" href="/login">Login Now!</a></p>
                        
