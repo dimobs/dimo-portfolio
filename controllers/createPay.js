@@ -19,13 +19,13 @@ module.exports = {
         };
 
         try {
-            await req.storage.createPay(pay);
+            await req.storage.createPay(pay); //from service
 
             res.redirect('/paymentHistory');
         } catch (err) {
             console.log('Error createing record');
             res.locals.errors = [{ msg: err.message }];
-            res.render('createPay', { title: `Create Listing - ${pay.sender}`, pay });
+            res.render('createPay', { title: `CreatePay Edding... - ${pay.sender}`, pay });
         }
     }
 };

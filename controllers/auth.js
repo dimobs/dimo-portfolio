@@ -85,6 +85,6 @@ router.get('/vote/:id/:type', isLoggedIn(), async (req, res) => {
         res.locals.errors = [{ msg: err.message }];
         res.render('paymentHistory', { title: 'History', errors });
     }
-})
+});
 
 module.exports = router;
