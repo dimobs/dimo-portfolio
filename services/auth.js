@@ -44,7 +44,6 @@ function logout(session) {
     delete session.user
 }
 
-
 async function userUpdate(session, username, newUser, password) {
             const user = await User.findOne({ username });
     if (newUser) {

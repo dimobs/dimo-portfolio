@@ -3,7 +3,6 @@ module.exports = {
     async get(req, res) {
         const id = req.params.id;
         const pay = await req.storage.getById(id, "pay");
-
         if (pay.owner != req.session.user.id) {
             console.log('User is not owner!');
             return res.redirect('/login');
@@ -16,6 +15,7 @@ module.exports = {
             res.redirect('404');
         }
     },
+
     async post(req, res) {
         const id = req.params.id;
         const pay = {

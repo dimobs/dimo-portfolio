@@ -7,11 +7,11 @@ const routesConfig = require('./config/routes');
 const recordService = require('./services/post');
 const authService = require('./services/auth');
 
-const { home } = require('./controllers/home');
+// const { home } = require('./controllers/home');
 // const { trip } = require('./controllers/trip');
 const { about } = require('./controllers/about');
 const createPay = require('./controllers/createPay');
-const createTrip = require('./controllers/createTrip');
+// const createTrip = require('./controllers/createTrip');
 const { profile } = require('./controllers/profile');
 const user = require('./controllers/user');
 const editPay = require('./controllers/editPay');
@@ -27,13 +27,14 @@ start();
 
 async function start() {
     const app = express();
-
+debugger
     expressConfig(app);
     await initDB(app);
-    routesConfig(app);
-
-    app.use(recordService());
     app.use(authService());
+    routesConfig(app); //home, authController
+    
+    app.use(recordService());
+    // app.use(authController);
 
     // function couting() {
     //     return function (req, res, next) {
@@ -45,10 +46,10 @@ async function start() {
     //         next();
     //     };
     // }
-
-    app.get('/', home);
+    
+    // app.get('/', home);
     // app.get('/trip', trip);
-    app.get('/administrator', administrator);
+    // app.get('/administrator', administrator);
     app.get('/paymentHistory', isLoggedIn(), paymentHistory);
     app.get('/about', about);
 
@@ -56,9 +57,9 @@ async function start() {
         .get(isLoggedIn(), createPay.get)
         .post(isLoggedIn(), createPay.post);
 
-        app.route('/createTrip')
-        .get(isLoggedIn(), createTrip.get)
-        .post(isLoggedIn(), createTrip.post);
+        // app.route('/createTrip')
+        // .get(isLoggedIn(), createTrip.get)
+        // .post(isLoggedIn(), createTrip.post);
 
     app.route('/user')
         .get(isLoggedIn(), user.get)
@@ -73,7 +74,6 @@ async function start() {
     app.route('/delete/:id')
         .get(isLoggedIn(), deletePay.get)
 
-    app.use(authController);
 
     app.all('*', notFound);
 

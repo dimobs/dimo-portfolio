@@ -1,10 +1,10 @@
-const collectionService = {};
+const payServices = require('../services/post');
 
 function preload(dataBase) {
     return async function (req, res, next){
         const id = req.params.id;
-        const data = await collectionService.getById(id, dataBase);
-        res.locals.data = data;
+        const pay = await payServices.getById(id, dataBase);
+        res.locals.pay = pay;
 
         next();
     };

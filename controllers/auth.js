@@ -1,10 +1,8 @@
-const { Router } = require('express');
+const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
 const { mapError } = require('../services/util');
 const { isGuest, isLoggedIn } = require('../middlewares/guards')
 const {vote} = require('../services/post')
-
-const router = Router();
 
 router.get('/register', isGuest(), (req, res) => {
     res.render('register', { title: 'Register' });

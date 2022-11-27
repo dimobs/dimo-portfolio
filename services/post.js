@@ -1,16 +1,16 @@
-const Trip = require('../models/Trip');
+// const Trip = require('../models/Trip');
 const Pay = require('../models/Pay');
 const { payModel } = require('./util');
 
 async function getById(id, dataBase) {
     if (dataBase == "pay") {
-        // const item = await Pay.findById(id).where({ isDeleted: false });
-        // if (item) {
-        //     return payModel(item);
-        // } else {
-        //     return undefined;
-        // }
- return await Pay.findById(id).where({ isDeleted: false }).lean;
+        const item = await Pay.findById(id).where({ isDeleted: false }); //във view работи с {{id}}
+        if (item) {
+            return payModel(item);
+        } else {
+            return undefined;
+        }
+//  return await Pay.findById(id).where({ isDeleted: false}).lean(); //във view работи с {{_id}}
     } else {
         const item = await Trip.findById(id);
         if (item) {
