@@ -12,15 +12,15 @@ const authService = require('./services/auth');
 // const { about } = require('./controllers/about');
 // const createPay = require('./controllers/createPay');
 // const createTrip = require('./controllers/createTrip');
-const { profile } = require('./controllers/profile');
-const user = require('./controllers/user');
-const editPay = require('./controllers/editPay');
+// const { profile } = require('./controllers/profile');
+// const user = require('./controllers/user');
+// const editPay = require('./controllers/editPay');
 const deletePay = require('./controllers/delete');
-const authController = require('./controllers/auth');
+// const authController = require('./controllers/auth');
 // const { administrator } = require('./controllers/administrator');
-const { paymentHistory } = require('./controllers/paymentHistory');
+// const { paymentHistory } = require('./controllers/paymentHistory');
 // const { notFound } = require('./controllers/notFound');
-const { isLoggedIn } = require('./middlewares/guards');
+const { isLoggedIn } = require('./middlewares/guards'); 
 
 
 start();
@@ -59,15 +59,15 @@ debugger
         // .get(isLoggedIn(), createTrip.get)
         // .post(isLoggedIn(), createTrip.post);
         
-        app.route('/user')
-        .get(isLoggedIn(), user.get)
-        .post(isLoggedIn(), user.post);
+        // app.route('/user')
+        // .get(isLoggedIn(), user.get)
+        // .post(isLoggedIn(), user.post);
         
-        app.get('/profile', isLoggedIn(), profile);
+        // app.get('/profile', isLoggedIn(), profile);
         
-        app.route('/editPay/:id')
-        .get(isLoggedIn(), editPay.get)
-        .post(isLoggedIn(), editPay.post)
+        // app.route('/editPay/:id')
+        // .get(isLoggedIn(), editPay.get)
+        // .post(isLoggedIn(), editPay.post)
         
         app.route('/delete/:id')
         .get(isLoggedIn(), deletePay.get)
