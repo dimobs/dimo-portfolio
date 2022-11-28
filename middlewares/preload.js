@@ -1,6 +1,6 @@
 const payServices = require('../services/post');
 
-function preload(dataBase) {
+function preload(populate) {
     return async function (req, res, next){
         const id = req.params.id;
         const pay = await payServices.getById(id, dataBase);
@@ -12,4 +12,4 @@ function preload(dataBase) {
 
 module.exports = {
     preload
-}
+};

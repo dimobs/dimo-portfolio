@@ -9,7 +9,7 @@ module.exports = (app) => {
 
     app.get('*', (req, res) => {
         res.render('404', {title: 'Page Not Found'})
-    })
+    });
     // app.use(postService);
     // app.use(tripController);
 }
