@@ -6,7 +6,7 @@ const createPay = require('../controllers/createPay');
 const user = require('../controllers/user');
 const { profile } = require('../controllers/profile');
 const editPay = require('../controllers/editPay');
-// const deletePay = require('../controllers/delete');
+const deletePay = require('../controllers/delete');
 
 
 const { greet } = require("../static/js/greetings.js");
@@ -22,9 +22,8 @@ router.get('/about', (req, res) => {
 
 router.get('/administrator', administrator);
 router.get('/paymentHistory', isLoggedIn(), paymentHistory);
-
-router.get('/createPay', isLoggedIn(), createPay.get);
-router.post('/createPay', isLoggedIn(), createPay.post);
+router.get('/profile', isLoggedIn(), profile);
+router.get('/delete/:id', isLoggedIn(), deletePay.get);
 
 router.get('/createPay', isLoggedIn(), createPay.get);
 router.post('/createPay', isLoggedIn(), createPay.post);
@@ -32,8 +31,6 @@ router.post('/createPay', isLoggedIn(), createPay.post);
 router.get('/editPay/:id', isLoggedIn(), editPay.get);
 router.post('/editPay/id', isLoggedIn(), editPay.post);
 
-router.get('/profile', isLoggedIn(), profile);
-// router.get('/delete/:id', isLoggedIn(), deletePay.get);
 
 module.exports = router;
 

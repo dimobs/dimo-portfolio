@@ -15,12 +15,12 @@ const authService = require('./services/auth');
 // const { profile } = require('./controllers/profile');
 // const user = require('./controllers/user');
 // const editPay = require('./controllers/editPay');
-const deletePay = require('./controllers/delete');
+// const deletePay = require('./controllers/delete');
 // const authController = require('./controllers/auth');
 // const { administrator } = require('./controllers/administrator');
 // const { paymentHistory } = require('./controllers/paymentHistory');
 // const { notFound } = require('./controllers/notFound');
-const { isLoggedIn } = require('./middlewares/guards'); 
+// const { isLoggedIn } = require('./middlewares/guards'); 
 
 
 start();
@@ -69,8 +69,9 @@ debugger
         // .get(isLoggedIn(), editPay.get)
         // .post(isLoggedIn(), editPay.post)
         
-        app.route('/delete/:id')
-        .get(isLoggedIn(), deletePay.get)
+        // app.route('/delete/:id')
+        // .get(isLoggedIn(), deletePay.get)
+
     routesConfig(app); //home, authController
                     
                     
