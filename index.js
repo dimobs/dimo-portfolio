@@ -27,11 +27,17 @@ start();
 
 async function start() {
     const app = express();
-debugger
     expressConfig(app);
     await initDB(app);
     app.use(authService());
     app.use(postService());
+
+  
+        // app.route('/user')
+        // .get(isLoggedIn(), user.get)
+        // .post(isLoggedIn(), user.post);
+
+
     // app.use(authController);
     
     // function couting() {
@@ -58,10 +64,7 @@ debugger
         // app.route('/createTrip')
         // .get(isLoggedIn(), createTrip.get)
         // .post(isLoggedIn(), createTrip.post);
-        
-        // app.route('/user')
-        // .get(isLoggedIn(), user.get)
-        // .post(isLoggedIn(), user.post);
+      
         
         // app.get('/profile', isLoggedIn(), profile);
         

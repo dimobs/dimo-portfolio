@@ -13,7 +13,7 @@ module.exports = {
             tablePays.map(pay => {
                 pay.isOwner = true;
             });
-
+            
         } else {
             tablePays.map(pay => {
                         pay.isLoggedIn = true;
