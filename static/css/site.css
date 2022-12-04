@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://use.fontawesome.com/releases/v5.12.1/css/all.css');
 
 body {
     margin: 0;
@@ -495,4 +496,8 @@ font-size: 44px;
 
 form {
     margin-bottom: 1.5rem;
+}
+
+i {
+font-size: 1em;
 }

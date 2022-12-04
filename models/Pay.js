@@ -17,8 +17,8 @@ const paySchema = new Schema({
     description: { type: String },
     date: {
         type: String, require:false, default: Date.now,
-        minlength: [10, `Data must be 10 characters longn`],
-        maxlength: [10, 'Data must be 10 characters long']
+        // minlength: [10, `Data must be 10 characters longn`],
+        // maxlength: [10, 'Data must be 10 characters long']
     },
     amount: { type: Number, require: true },
     isDeleted: { type: Boolean, default: false },

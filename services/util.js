@@ -67,10 +67,9 @@ function mapError(error) {
 }
 
 function voterViewModel(user) {
- 
     return {
         id: user._id,
-        email: user.email,
+        user: user.username,
         // username: user.username
     }
 

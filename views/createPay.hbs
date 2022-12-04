@@ -4,7 +4,7 @@
 </div>
 <h1>Payment Page</h1>
 <p>Expense Tracker</p>
-
+<i class="fa-regular fa-arrow-right-to-arc"></i>
 <div class="form">
   <form action="/createPay" method="POST">
         <select name="sender">
@@ -19,14 +19,25 @@
             <option value="Todor">Todor Yankov Karachorbadzhiev</option>
             <option value="Dimo" selected>Dimo Yankov Karachorbadzhiev</option>
             <option value="Ivanka">Ivanka Dimova Karachorbadzhieva</option>
-        </select>
-        <label for="date">Data:</label>
-        <p style="display:inline-block; color: grey">Format: dd/mm/yyyy</p>
-        <input name="date" type="text" value="{{dateBg}}" placeholder="{{dateBg}}">
-        <label for="amount">Amount:</label>
-        <input placeholder="0.00*" id="price" name="amount" value="">
+        </select>  
+       
+        {{!-- <p style="display:inline-block; color: grey">Format: dd/mm/yyyy</p> --}}
+{{!-- <h5 style="padding: 10px 10px 10px 10px;" class="mt-4 card-info"><label for=""> Date: </label><i class="far fa-calendar-alt"></i><span>2021-06-16</span> --}}
+
+  <label  for="">Date:</label>  <i class="far fa-calendar-alt"></i> 
+  <input  name="date" type="text" value="{{dateBg}}" placeholder="{{dateBg}}"/>
+  
+      <label style="display: inline-block;" for="amount">Amount:</label>
+      <div style="display: block;">
+        <input placeholder="0.00*" id="amount" name="amount" value="">
+ <i class="fas fa-hand-holding-usd"></i>       
+        </div>
+        {{!-- <div style="margin-top: 2em;">
+
+        Description: --}}
         <label style="display: block; margin-top: 2em" for="description">Description:</label>
         <textarea id="name" placeholder="Pay for?" name="description"></textarea>
+        {{!-- </div> --}}
         <label for="imageURL">IMAGE:</label>
         <input type="text" placeholder="Add image" id="image" name="imageUrl" value="">
         <input type="submit" value="Publish">

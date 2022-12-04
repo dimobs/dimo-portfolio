@@ -11,6 +11,7 @@ const {about} = require('../controllers/about');
 
 
 const { greet } = require("../static/js/greetings.js");
+const { preload } = require('../middlewares/preload');
 const time = greet();
 
 router.get('/', (req, res) => {
@@ -33,7 +34,9 @@ router.post('/createPay', isLoggedIn(), createPay.post);
 router.get('/createPay', isLoggedIn(), createPay.get);
 router.post('/createPay', isLoggedIn(), createPay.post);
 
-router.get('/editPay/:id', isLoggedIn(), editPay.get);
+router.get('/editPay/:id', isLoggedIn(), preload(true), (req, res) => {
+    console.log('edittttt', res.locals.pay);
+});
 router.post('/editPay/:id', isLoggedIn(), editPay.post);
 
 module.exports = router;

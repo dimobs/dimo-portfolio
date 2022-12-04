@@ -4,8 +4,7 @@ const { getPayById } = require('../services/post');
 module.exports = {
     async paymentHistory(req, res) {
 
-        const tablePays = await req.storage.getAll({});
-
+        const tablePays = await req.storage.getAllWithUsers({});
         // const id = req.session.user.id; //req. params.id
         // const post = payModel(await getPayById(id));
         // console.log(post);
@@ -13,11 +12,12 @@ module.exports = {
             tablePays.map(pay => {
                 pay.isOwner = true;
             });
-            
+
         } else {
             tablePays.map(pay => {
-                        pay.isLoggedIn = true;
-                if (req.session.user && req.session.user.id == pay.owner) {
+               
+                pay.isLoggedIn = true;
+                if (req.session.user && req.session.user.id == pay.owner._id) {
                     pay.isOwner = true;
                 } else {
                     pay.hasVoted = pay.votes.find(v => v.id == req.session.user.id) != undefined;
@@ -25,7 +25,7 @@ module.exports = {
                 }
             });
         }
-        
+
         res.render('paymentHistory', { title: "History", tablePays });
     }
 }

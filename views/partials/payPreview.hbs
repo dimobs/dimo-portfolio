@@ -1,6 +1,6 @@
  
    <td class="tr">{{date}}</td>
-   <td>{{user}}</td>
+   <td>{{owner.username}}</td>
     <td>{{sender}}</td>
     <td>{{resiver}}</td>
     <td>{{amount}}</td>
@@ -25,9 +25,9 @@
       </div>
    {{/if}}
    {{/if}}
-            <td><p class="PV">Votes: {{rating}} </p>
+            <td><p class="PV">Rating: {{rating}} </p>
             {{#if votes}}
-   <p>Users who voted: {{#each votes}}{{email}}{{/each}}</p>
+   <p>Users who voted: {{#each votes}}{{user}}, {{/each}}</p>
    {{else}}
    <p>No one has voted yet.</p>
           </td>   

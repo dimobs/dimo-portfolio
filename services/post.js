@@ -25,9 +25,6 @@ async function getAll(query) {
     const options = {
         isDeleted: false
     };
-
-    // const pays = await Pay.find({}).lean(); //Лийм изпраща всички данни
-    //    return pays;
     const pays = await Pay.find(options); //View Model копира само инфото, която да пратим
     return pays.map(payModel);
 }
@@ -92,6 +89,18 @@ async function getPostByAuthor(userId) {
 //    return Pay.findById(id).populate('owner', 'sender', 'resiver');
 // }
 
+async function getAllPaysAndUsers(id) {
+    return await Pay.findById(id).populate('owner').populate('votes').lean();
+}
+
+async function getAllWithUsers(query) {
+    const options = {
+        isDeleted: false
+    };
+    const pays = await Pay.find(options).populate('owner').populate('votes').lean(); //View Model копира само инфото, която да пратим
+     return pays.map(payModel);
+}
+
 
 module.exports = () => (req, res, next) => {
     req.storage = {
@@ -102,7 +111,9 @@ module.exports = () => (req, res, next) => {
         deleteById,
         // createTrip,
         vote, 
-        getPostByAuthor
+        getPostByAuthor, 
+        getAllPaysAndUsers,
+        getAllWithUsers
         // getPayById
     };
     next();
