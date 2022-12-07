@@ -33,7 +33,7 @@ router.get('/profile', isLoggedIn(), async (req, res) => {
     res.locals.user.tablePays.map(x => {
         x.isOwner = true
     });
-    console.log('rrrr', res.locals.user);
+ 
     res.render('profile', { title: 'Profile Page' })
 });
 
