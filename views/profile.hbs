@@ -1,17 +1,18 @@
   {{!-- <h4></h4>You have visit this site {{visitNumber}} times</h4> --}}
-   {{#with user}}
+
     <div class="profile-container">
                 <!-- Do not forget to change the path to the image -->
                 <!-- Gender of the user determines which picture is displayed as their avatar -->
                 <img class="profile-img" src="/static/images/{{gender}}.png">
-           <p>User: <span>{{gender}}</span></p>
+           <p>User: <span>{{user.gender}}</span></p>
+         
               </div>
-  <p>User: <span>{{username}}</span></p>
+  <p>User: <span>{{user.username}}</span></p>
 <div class="admin">
 <li><a href="/user">Change User Details</a></li>
 <li><a href="/createPay">Create</a></li>
 <p>Table:</p>
-   <p>You have created: <span>{{tablePays.counts}}</span> records</p>
+   <p>You have created: <span>{{user.payCount}}</span> records</p>
    <table>
   <colgroup class="colgroup">
     <col style="background-color:burlywood">
@@ -24,7 +25,7 @@
     <th>Money</th>
     <th>description</th>
     </tr>
-    {{#each tablePays}}
+    {{#each user.tablePays}}
          <tr class="tr">
     {{> profilePayPreview}}
      </tr>
@@ -33,4 +34,3 @@
     {{/each}}
  </table>
 </div>
-{{/with}}

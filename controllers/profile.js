@@ -37,7 +37,7 @@ module.exports = {
                 }
             });
         }
-
+console.log(tablePays);
         res.render('profile', { tablePays, title: 'User Profile' });
     }
 }
