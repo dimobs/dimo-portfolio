@@ -72,7 +72,7 @@ async function vote(postId, userId, value) { //itme, user, amount
 };
 
 async function getPostByAuthor(userId) {
-    return Pay.find({owner: userId})
+    return Pay.find({owner: userId}).lean();
 }
 
 // async function getPayById(id) {
@@ -92,22 +92,6 @@ async function getAllWithUsers(query) {
     return pays.map(payModel);
 }
 
-async function profileInfo() {
-    const item = await Pay.find({isDeleted: false}).populate('owner').lean(); //във view работи с {{id}}
-    return {
-        item: item.owner
-    }
-    if (item) {
-        return payModel(item);
-    } else {
-        return undefined;
-    }
-//  return await Pay.findById(id).where({ isDeleted: false}).lean(); //във view работи с {{_id}}
-}
-
-
-
-
 module.exports = () => (req, res, next) => {
     req.storage = {
         createPay,
@@ -120,7 +104,7 @@ module.exports = () => (req, res, next) => {
         getPostByAuthor, 
         getAllPaysAndUsers,
         getAllWithUsers,
-        profileInfo
+        
         // getPayById
     };
     next();

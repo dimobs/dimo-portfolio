@@ -1,13 +1,12 @@
   {{!-- <h4></h4>You have visit this site {{visitNumber}} times</h4> --}}
+   {{#with user}}
     <div class="profile-container">
                 <!-- Do not forget to change the path to the image -->
                 <!-- Gender of the user determines which picture is displayed as their avatar -->
-                <img class="profile-img" src="/static/images/{{user.gender}}.png">
-           <p>User: <span>{{user.gender}}</span></p>
-           {{gender}}
-              
-            </div>
-  <p>User: <span>{{user.username}}</span></p>
+                <img class="profile-img" src="/static/images/{{gender}}.png">
+           <p>User: <span>{{gender}}</span></p>
+              </div>
+  <p>User: <span>{{username}}</span></p>
 <div class="admin">
 <li><a href="/user">Change User Details</a></li>
 <li><a href="/createPay">Create</a></li>
@@ -26,7 +25,7 @@
     <th>description</th>
     </tr>
     {{#each tablePays}}
-     <tr class="tr">
+         <tr class="tr">
     {{> profilePayPreview}}
      </tr>
     {{else}}
@@ -34,3 +33,4 @@
     {{/each}}
  </table>
 </div>
+{{/with}}

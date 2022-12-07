@@ -26,6 +26,14 @@ router.get('/about', about);
 router.get('/administrator', administrator);
 router.get('/paymentHistory', isLoggedIn(), paymentHistory);
 router.get('/profile', isLoggedIn(), profile);
+// router.get('/profile', isLoggedIn(), async (req, res) => {
+//     const paysByUser = await req.storage.getPostByAuthor(res.locals.user.id);
+//     res.locals.user.pays = paysByUser;
+//     res.locals.user.payCount = paysByUser.length;
+//     console.log('userrrr',res.locals.user);
+//     res.render('profile', { title: 'Profile Page' })
+// });
+
 router.get('/delete/:id', isLoggedIn(), deletePay.get);
 
 router.get('/createPay', isLoggedIn(), createPay.get);
@@ -37,7 +45,7 @@ router.post('/createPay', isLoggedIn(), createPay.post);
 router.get('/editPay/:id', isLoggedIn(), editPay.get);
 // router.post('/editPay/:id', isLoggedIn(), editPay.post);
 // router.get('/editPay/:id', isLoggedIn(), preload(true), (req, res) => {});
-router.post('/editPay/:id', preload(), isOwner(), editPay.post );
+router.post('/editPay/:id', preload(), isOwner(), editPay.post);
 
 module.exports = router;
 
