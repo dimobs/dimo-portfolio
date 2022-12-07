@@ -70,9 +70,7 @@ function voterViewModel(user) {
     return {
         id: user._id,
         user: user.username,
-        // username: user.username
     }
-
 }
 
 module.exports = {

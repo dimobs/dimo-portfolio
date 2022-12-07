@@ -2,8 +2,7 @@
 const Pay = require('../models/Pay');
 const { payModel } = require('./util');
 
-async function getById(id, dataBase) {
-    if (dataBase == "pay") {
+async function getById(id) {
         const item = await Pay.findById(id).where({ isDeleted: false }); //във view работи с {{id}}
         if (item) {
             return payModel(item);
@@ -11,14 +10,6 @@ async function getById(id, dataBase) {
             return undefined;
         }
 //  return await Pay.findById(id).where({ isDeleted: false}).lean(); //във view работи с {{_id}}
-    } else {
-        const item = await Trip.findById(id);
-        if (item) {
-            return payModel(item);
-        } else {
-            return undefined;
-        }
-    }
 }
 
 async function getAll(query) {
@@ -49,7 +40,7 @@ async function updateById(id, pay, ownerId) {
     existing.resiver = pay.resiver;
     existing.description = pay.description || undefined;
     existing.imageUrl = pay.imageUrl || "No image";
-    existing.date = pay.date || "22.22.2022";
+    existing.date = pay.date;
     existing.amount = pay.amount;
     // existing.accessories = car.accessories;
 
@@ -74,7 +65,6 @@ async function vote(postId, userId, value) { //itme, user, amount
     if (pay.votes.includes(userId)) {
         throw new Error('User has already voted')
     }
-
     pay.votes.push(userId);
     pay.rating += value;
 
@@ -98,8 +88,24 @@ async function getAllWithUsers(query) {
         isDeleted: false
     };
     const pays = await Pay.find(options).populate('owner').populate('votes').lean(); //View Model копира само инфото, която да пратим
-     return pays.map(payModel);
+  
+    return pays.map(payModel);
 }
+
+async function profileInfo() {
+    const item = await Pay.find({isDeleted: false}).populate('owner').lean(); //във view работи с {{id}}
+    return {
+        item: item.owner
+    }
+    if (item) {
+        return payModel(item);
+    } else {
+        return undefined;
+    }
+//  return await Pay.findById(id).where({ isDeleted: false}).lean(); //във view работи с {{_id}}
+}
+
+
 
 
 module.exports = () => (req, res, next) => {
@@ -113,7 +119,8 @@ module.exports = () => (req, res, next) => {
         vote, 
         getPostByAuthor, 
         getAllPaysAndUsers,
-        getAllWithUsers
+        getAllWithUsers,
+        profileInfo
         // getPayById
     };
     next();

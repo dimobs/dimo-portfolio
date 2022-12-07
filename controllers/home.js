@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const administrator = require('../controllers/administrator');
 const { paymentHistory } = require('../controllers/paymentHistory');
-const { isLoggedIn } = require('../middlewares/guards');
+const { isLoggedIn, isOwner } = require('../middlewares/guards');
 const createPay = require('../controllers/createPay');
 const user = require('../controllers/user');
 const { profile } = require('../controllers/profile');
 const editPay = require('../controllers/editPay');
 const deletePay = require('../controllers/delete');
-const {about} = require('../controllers/about');
+const { about } = require('../controllers/about');
 
 
 const { greet } = require("../static/js/greetings.js");
@@ -34,10 +34,10 @@ router.post('/createPay', isLoggedIn(), createPay.post);
 router.get('/createPay', isLoggedIn(), createPay.get);
 router.post('/createPay', isLoggedIn(), createPay.post);
 
-router.get('/editPay/:id', isLoggedIn(), preload(true), (req, res) => {
-    console.log('edittttt', res.locals.pay);
-});
-router.post('/editPay/:id', isLoggedIn(), editPay.post);
+router.get('/editPay/:id', isLoggedIn(), editPay.get);
+// router.post('/editPay/:id', isLoggedIn(), editPay.post);
+// router.get('/editPay/:id', isLoggedIn(), preload(true), (req, res) => {});
+router.post('/editPay/:id', preload(), isOwner(), editPay.post );
 
 module.exports = router;
 

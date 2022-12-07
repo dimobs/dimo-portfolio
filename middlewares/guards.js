@@ -21,11 +21,12 @@ function isGuest() {
 }
 
 function isOwner() {
-    return function (req, res, next) {
-        const userId = req.session.user?.id;
-        if(req.locals.pay.owner == userId ){
+   return function (req, res, next) {
+    const userId = req.session.user?.id;
+
+    if (res.locals.pay.owner == userId) {
             next();
-        }else {
+        } else {
             res.redirect('/login');
         }
     };

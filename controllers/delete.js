@@ -1,7 +1,6 @@
 module.exports = {
     async get(req, res) {
         const id = req.params.id;
-console.log(id);
         try {
             if (await req.storage.deleteById(id, req.session.user.id)) {
                 res.redirect('/paymentHistory');
