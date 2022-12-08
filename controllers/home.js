@@ -18,10 +18,6 @@ router.get('/', (req, res) => {
     res.render('index', { title: "Welcome", time })
 });
 
-// router.get('/', (req, res) => {
-//     res.render('about', { title: "Welcome", time })
-// });
-
 router.get('/about', about);
 router.get('/administrator', administrator);
 router.get('/paymentHistory', isLoggedIn(), paymentHistory);
