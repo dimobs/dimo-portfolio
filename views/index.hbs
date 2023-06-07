@@ -1,5 +1,10 @@
 
-<h1>Browser</h1>
+           {{#if hasUser}}
+  <div class="welcome1">{{time}}, {{user.username}}!</div>
+            {{else}}
+  <section class="welcome1">{{time}}</section>
+            {{/if}}
+<h1>Welcome</h1>
 <form action="/" method="GET">
     <input type="text" class="search" name="search" placeholder="Search..." value="{{query.search}}">
     <input type="number" name="from" class="difficulty" placeholder="Price from..." value="{{query.from}}">
@@ -7,25 +12,13 @@
     <input type="number" name="to" class="difficulty" placeholder="Price to..." value="{{query.to}}">
     <input type="submit" value="search">
 </form>
-    
+<div class="container">
+      <a class="btnAction" style="color:dark=green" href="/trip">View Trip Site</a>
+      <a class="btnAction" style="color:dark=green" href="/paymentHistory">Paiment History</a>
+</div>
 
 <script src="/static/js/app.js"></script>
 
 
-
-<script>
-    const myDate = new Date();
-    const hrs = myDate.getHours();      
-    let greet;
-      
-    if (hrs < 12)
-         greet = 'Good Morning,';
-        else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good Afternoon,';
-     else if (hrs >= 17 && hrs <= 24)
-     greet = 'Good Evening,';
-         document.getElementById('greeting').innerHTML =
-        '<b>' + greet + '</b> {{user.username}}';
-</script>
 
 

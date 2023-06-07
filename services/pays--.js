@@ -38,6 +38,7 @@ async function updateById(id, pay, ownerId) {
     existing.resiver = pay.resiver;
     existing.description = pay.description || undefined;
     existing.imageUrl = pay.imageUrl || "No image";
+    existing.date = pay.date || "No date";
     existing.amount = pay.amount;
     // existing.accessories = car.accessories;
 
@@ -56,6 +57,10 @@ async function deleteById(id, ownerId) {
     return true;
 }
 
+// async function getPayById(id) {
+//    return Pay.findById(id).populate('owner', 'sender', 'resiver');
+// }
+
 
 module.exports = () => (req, res, next) => {
     req.storage = {
@@ -63,7 +68,8 @@ module.exports = () => (req, res, next) => {
         getAll,
         getById,
         updateById,
-        deleteById
+        deleteById,
+        // getPayById
     };
     next();
 };

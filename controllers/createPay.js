@@ -1,8 +1,10 @@
-const { mapError } = require('../services/util')
+const { mapError } = require('../services/util');
+const { dateBgFormat } = require("../static/js/greetings.js");
+const dateBg = dateBgFormat();
 
 module.exports = {
-    get(req, res) {
-        res.render('createPay', { title: "CreatePay Listing" })
+    async get(req, res) {
+        res.render('createPay', { title: `CreatePay`, dateBg })
     },
 
     async post(req, res) {
@@ -10,21 +12,20 @@ module.exports = {
             sender: req.body.sender,
             resiver: req.body.resiver,
             amount: Number(req.body.amount),
-            description: req.body.description,
+            description: req.body.description || 'No Description',
             imageUrl: req.body.imageUrl,
-            date: req.body.date,
+            date: req.body.date || dateBg,
             owner: req.session.user.id,
         };
-      
+
         try {
-            await req.storage.createPay(pay);
+            await req.storage.createPay(pay); //from service
 
             res.redirect('/paymentHistory');
         } catch (err) {
             console.log('Error createing record');
-            res.locals.error = mapError(err);
-            res.render('createPay', { title: "Create Listing", pay });
+            res.locals.errors = [{ msg: err.message }];
+            res.render('createPay', { title: `CreatePay Edding... - ${pay.sender}`, pay });
         }
     }
 };
-

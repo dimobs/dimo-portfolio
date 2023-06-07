@@ -1,13 +1,20 @@
 const mongoose = require('mongoose');
+require('../models/Users')
 require('../models/Pay');
-const connectionString = 'mongodb://127.0.0.1:27017/potfolio';
+// require('../models/Trip');
+
+
+const dbName = 'potfolio'
+// const connectionString = `mongodb://127.0.0.1:27017/${dbName}`;
+const connectionString = `mongodb+srv://Dimo:112233Dimo@cluster0.zwa68.mongodb.net/?retryWrites=true&w=majority`;
+
 
 module.exports = async(app) =>{
     try {
         await mongoose.connect(connectionString, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            autoIndex: false
+            // autoIndex: false
         });
         console.log('Database connected');
 

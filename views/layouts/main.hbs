@@ -14,39 +14,35 @@
     <div class="container">
         <header>
           <ul>
-            <li><a href="/"> <img class="logo" src="/static/images/logo-dimo.png"></a></li>
+            <li><a href="/"> <img class="logo" src="/static/images/logo-dimo.png"></a></li> 
             {{#if hasUser}}
             <li><a href="/administrator">Admin</a></li>
             <li><a href="/logout">Logout</a></li>
+               <li class="nav-item">
+           {{!-- <a class="nav-link" href="/logout">Logout as {{user.username}}</a> --}}
+            <li><a href="/profile" id="greeting">Profile {{user.username}}</a></li>
             {{else}}
              <li><a href="/login">Login</a></li>
             <li><a href="/register">Register</a></li>
             {{/if}}
             <li><a href="/about">About</a></li>
-            {{#if hasUser}}
-            <li><a href="/userInfo" id="greeting"></a></li>
-             {{!-- <li><h4 <b style="color:white">{{user.username}}</b></h4></li> --}}
-            {{else}}
-            <li><a style="color:white" href="/login" id="greeting"> user: Anonymus</a></li>
-            {{!-- <li><h4>user:<a href="/login" style="color:white">Anonymus</a></h4></li> --}}
-            {{/if}}
           </ul>
-        </header>
-             <div class="header_bottom"></div>
-        {{#if errors}}
+        </header>   
+      <div class="header_bottom"></div>
+      <main>  
+      {{#if errors}}
       <div id="notifications">
         {{#each errors}}
-        <p>{{msg}}</p>
+      <p>{{msg}}</p>
         {{/each}}
       </div>
-      {{/if}}
-                <main>
-                
-                {{{body}}}
-                </main>
-     </div>
+        {{/if}}     
+       {{{body}}}
+      </main>
+      </div>
+
   <div class="header_bottom"></div>
-<footer>&copy; Portfolio: Dimo Yankov Karachorbadzhiev (This site is using Express.js and Handlebars</footer>
+<footer>&copy; Portfolio: Dimo Yankov Karachorbadzhiev (This site is using Express.js and Handlebars)</footer>
   <div class="header_bottom"></div>
 </body>
 

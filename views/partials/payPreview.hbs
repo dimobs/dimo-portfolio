@@ -1,11 +1,45 @@
  
-   <td class="tr">{{action}}</td>
+   <td class="tr">{{date}}</td>
+   <td>{{owner.username}}</td>
     <td>{{sender}}</td>
     <td>{{resiver}}</td>
     <td>{{amount}}</td>
     <td>{{description}}</td>
-      {{#if isOwner}}
-     <td><a class="btnAction" href="/editPay/{{id}}">edit</a></td>
-    <td><a class="btnAction" href="/delete/{{id}}">delete</a></td>
+
+    {{#if isLoggedIn}}
+     {{#if isOwner}}
+
+     <td><a class="btnAction" href="/editPay/{{id}}">Edit</a></td>
+     <td><a class="btnAction" href="/delete/{{id}}">Delete</a></td>
+     
+    
+    {{!-- isOwner --}}
+     {{else}}
+     {{#if hasVoted}}
+      <div class="social-btn">
+      <td class="thanks-for-vote">Voted!</td>
+      {{!-- hasVoted --}}
+       {{else}}
+         <!-- Only for registered user and author of the post -->
+        <td><a  class="btnAction" href="/vote/{{id}}/approve" class="vote-up">Approved</a></td> 
+        <td> <a  class="btnAction" href="/vote/{{id}}/disapproved" class="vote-down">Disapproved</a></td> 
+               <!-- logged in user who has already voted-->
+      </div>
+      {{!-- hasVoted --}}
+    {{/if}}
+    
+   {{!-- isOwner --}}
    {{/if}}
+       <td><p class="PV">Rating: {{rating}} </p>
+       {{#if votes}}
+    <p>Users who voted: {{votesUsers}}</p>
+    {{!-- votes --}}
+    {{else}}
+   <p>No one has voted yet.</p>
+       </td> 
+       {{!-- votes  --}}
+   {{/if}}
+
+{{!-- isLoggedIn --}}
+   {{/if}} 
 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://use.fontawesome.com/releases/v5.12.1/css/all.css');
 
 body {
     margin: 0;
@@ -392,4 +393,120 @@ div.format-404 {
     padding: 8px 12px;
     text-decoration: none;
     font-size: larger;
+  }
+
+  table,
+th,
+td {
+    border: 1px solid;
+    text-transform: capitalize;
+}
+
+table {
+    margin: 0 auto;
+    display: block;
+    overflow-x: auto;
+    border-spacing: 0;
+}
+
+tbody {
+    white-space: nowrap;
+}
+
+th,
+td {
+    padding: 5px 10px;
+    border-top-width: 0;
+    border-left-width: 0;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    vertical-align: bottom;
+}
+
+th:last-child,
+td:last-child {
+    border-right-width: 0;
+}
+
+tr:last-child td {
+    border-bottom-width: 0;
+}
+
+/*
+ot shared trip 
+*/
+.login-page>h1, .register-page>h1, .offer-trip>h1 {
+    margin: 2%;
+    text-align: center;
+  }
+
+  .login, .register {
+    width: 40%!important;
+  }
+
+  .form-group textarea {
+    resize: none;
+  }
+
+  div.container .register, div.container .login {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+  }
+
+  div.container .register, div.container .login {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+  }
+
+  .edit textarea.form-control, .offer-trip textarea.form-control {
+    width: 100%;
+    height: 90px;
+  }
+
+  .welcome1 {
+    margin: 20px;
+text-align: center;
+    color: green;
+    text-transform: capitalize;
+font-size: 44px;
+}
+
+.genderLabel {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.gender {
+    box-shadow: 0px -2px 20px -1px #383735, inset -14px -14px 30px -13px rgb(0 0 0 / 55%);
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: .25rem;
+    padding-top: 5px;
+    margin-bottom: 15px;
+  }
+.genderDiv {
+    background-color: #f7f6fa;
+    color: black;
+}
+
+form {
+    margin-bottom: 1.5rem;
+}
+
+i {
+font-size: 1em;
+}
+
+.profile-container {
+    box-shadow: 0px -2px 20px -1px #f4c537, inset -14px -14px 30px -13px rgb(0 0 0 / 55%);
+    margin-top: 100px;
+    color: white;
+    width: 350px;
+    border-top-left-radius: 20px;
+    background: rgba(0, 0, 0, 0.4);
   }

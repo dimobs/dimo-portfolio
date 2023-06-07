@@ -1,14 +1,27 @@
 <h1>Register Form</h1>
 <div class="form">
     <form action="/register" method="POST">
-        <label for="username">Username</label>
+        <label for="username">Username*</label>
         <input type="text" id="username" name="username" value="{{data.username}}">
-
-        <label for="password">Password</label>
+        <label for="password">Password*</label>
         <input type="password" id="password" name="password" value="{{data.password}}">
-
-        <label for="repeatPassword">Re-Password</label>
+        <label for="repeatPassword">Re-Password*</label>
         <input type="password" id="repeatPassword" name="repeatPassword">
+
+   <label for="email">Email address</label>
+        <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" value="{{data.email}}">
+       
+        <label class="genderLabel">Gender</label>    
+        <div class="gender">
+        <label class="genderDiv" for="female">Female</label>
+        <input class="genderDiv" type="radio" id="female" name="gender" value="female" {{#unless data.isMale}}checked{{/unless}}>
+        <label class="genderDiv" for="male">Male</label>
+        <input class="genderDiv" type="radio" id="male" name="gender" value="male" {{#if data.isMale}}checked{{/if}} >
+        </div>
+        <p>Already have account? <a style="color:red" href="/login">Login Now!</a></p>
+                       
         <input type="submit" value="Register">
     </form>
 </div>
+
+      

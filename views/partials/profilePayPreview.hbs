@@ -1,0 +1,10 @@
+      {{#if isOwner}}
+   <td class="tr">{{date}}</td>
+    <td>{{sender}}</td>
+    <td>{{resiver}}</td>
+    <td>{{amount}}</td>
+    <td>{{description}}</td>
+     <td><a class="btnAction" href="/editPay/{{id}}">edit</a></td>
+    <td><a class="btnAction" href="/delete/{{id}}">delete</a></td>
+   {{/if}}
+

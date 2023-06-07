@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 
-
 function accessoryViewModel(accessory) {
     // return {
     //     id: accessory._id,
@@ -21,13 +20,15 @@ function payModel(pay) {
         amount: pay.amount,
         description: pay.description,
         date: pay.date,
-        owner: pay.owner
+        owner: pay.owner,
+        votes: pay.votes.map(voterViewModel),
+        rating: pay.rating,
     };
 
     // if (model.accessories.length > 0 && model.accessories[0].name) {
     //     model.accessories = model.accessories.map(accessoryViewModel);
     // }
-
+ 
     return model;
 }
 
@@ -37,16 +38,6 @@ async function hashPassword(password) {
 
 async function comparePassword(password, hashedPassword) {
     return bcrypt.compare(password, hashedPassword);
-}
-
-function isLoggedIn() {
-    return function (req, res, next) {
-        if (req.session.user) {
-            next();
-        } else {
-            res.redirect('/login');
-        }
-    };
 }
 
 function mapError(error) {
@@ -75,11 +66,17 @@ function mapError(error) {
     }
 }
 
+function voterViewModel(user) {
+    return {
+        id: user._id,
+        user: user.username,
+    }
+}
+
 module.exports = {
     accessoryViewModel,
     payModel,
     hashPassword,
     comparePassword,
-    isLoggedIn,
     mapError
 };

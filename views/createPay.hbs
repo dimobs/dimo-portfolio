@@ -4,35 +4,42 @@
 </div>
 <h1>Payment Page</h1>
 <p>Expense Tracker</p>
-
-
+<i class="fa-regular fa-arrow-right-to-arc"></i>
 <div class="form">
   <form action="/createPay" method="POST">
-
-         <select name="sender">
+        <select name="sender">
             <option >Select Sender Name*</option>
             <option value="Todor" selected>Todor Yankov Karachorbadzhiev</option>
             <option value="Dimo" name="nameSender">Dimo Yankov Karachorbadzhiev</option>
             <option value="Ivanka" name="nameSender">Ivanka Dimova Karachorbadzhieva</option>
         </select>
 
-            <select name="resiver">
+        <select name="resiver">
             <option >Select Resiver Name*</option>
             <option value="Todor">Todor Yankov Karachorbadzhiev</option>
             <option value="Dimo" selected>Dimo Yankov Karachorbadzhiev</option>
             <option value="Ivanka">Ivanka Dimova Karachorbadzhieva</option>
-        </select>
-        <label for="date">Date of creation:</label>
-        <input type='text' name="date" placeholder="19.02.2021" value="{{pay.date}}">
-        <label for="price">Amount:</label>
-        <input placeholder="0.00*" id="price" name="amount" value="{{pay.amaunt}}">
-        <label for="description">Description:</label>
-        <textarea id="name" placeholder="Description" name="description">{{pay.description}}</textarea>
-         <label for="image">Image:</label>
+        </select>  
+       
+        {{!-- <p style="display:inline-block; color: grey">Format: dd/mm/yyyy</p> --}}
+{{!-- <h5 style="padding: 10px 10px 10px 10px;" class="mt-4 card-info"><label for=""> Date: </label><i class="far fa-calendar-alt"></i><span>2021-06-16</span> --}}
 
-        <input type="text" placeholder="Add image" id="image" name="imageUrl" value="{{pay.imageUrl}}">
+  <label  for="">Date:</label>  <i class="far fa-calendar-alt"></i> 
+  <input  name="date" type="text" value="{{dateBg}}" placeholder="{{dateBg}}"/>
+  
+      <label style="display: inline-block;" for="amount">Amount:</label>
+      <div style="display: block;">
+        <input placeholder="0.00*" id="amount" name="amount" value="">
+ <i class="fas fa-hand-holding-usd"></i>       
+        </div>
+        {{!-- <div style="margin-top: 2em;">
+
+        Description: --}}
+        <label style="display: block; margin-top: 2em" for="description">Description:</label>
+        <textarea id="name" placeholder="Pay for?" name="description"></textarea>
+        {{!-- </div> --}}
+        <label for="imageURL">IMAGE:</label>
+        <input type="text" placeholder="Add image" id="image" name="imageUrl" value="">
         <input type="submit" value="Publish">
     </form>
 </div>
-
-

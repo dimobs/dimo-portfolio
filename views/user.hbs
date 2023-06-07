@@ -1,16 +1,15 @@
 <h1>Change Username or Password</h1>
 <div class="form">
-    <form action="/userInfo" method="POST">
+    <form action="/profile" method="POST">
         <label for="username">Current Username</label>
         <input  value="{{user.username}}" type="text" id="username" name="username" readonly>
         <label for="username">Change Username</label>
         <input  type="text" id="username" name="NewUsername">
-        <input type="submit" value="Change">
     </form>
 </div>
 
 <div class="form">
-    <form action="/userInfo" method="POST">
+    <form action="/profile" method="POST">
         <label for="password">Change Password</label>
         <input placeholder="***" type="password" id="password" name="password">
 
