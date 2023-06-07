@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 require('../models/Pay');
-const connectionString = 'mongodb://localhost:27017/potfolio';
+const connectionString = 'mongodb://127.0.0.1:27017/potfolio';
 
 module.exports = async(app) =>{
     try {
