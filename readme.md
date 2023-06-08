@@ -29,3 +29,7 @@ welcome screen
 
 * Outher user Approved or Disappointed paymens related to pay
 * <img width="1222" alt="Screenshot 2023-06-08 125732" src="https://github.com/dimobs/dimo-portfolio/assets/70681810/68b24337-0f48-491d-96b6-4ada099cf4cb">
+
+* Admin(current user) see only himself record
+* <img width="1332" alt="Screenshot 2023-06-08 130843" src="https://github.com/dimobs/dimo-portfolio/assets/70681810/3a59211d-22dc-4f4f-86f8-7fc659f4b534">
+
