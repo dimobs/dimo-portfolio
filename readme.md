@@ -22,8 +22,8 @@ welcome screen
 <img width="794" alt="Screenshot 2023-06-08 124910" src="https://github.com/dimobs/dimo-portfolio/assets/70681810/43a3d63a-2547-4f74-8c02-03ecacb4d2c7">
 
 
-* Other creater of the pay see buttons APPROVE OR DISAPPROVE 
-* Creater see EDIT OR DELETE buttons
+* Other creator of the pay see buttons APPROVE OR DISAPPROVE 
+* creator see EDIT OR DELETE buttons
 * <img width="1214" alt="Screenshot 2023-06-08 125424" src="https://github.com/dimobs/dimo-portfolio/assets/70681810/4ae62ad9-22db-4d31-93ca-c6372ad997fe">
 
 
